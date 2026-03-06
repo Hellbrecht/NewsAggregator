@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Water Risk News</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="top-nav-inner">
+        <a class="top-nav-brand" href="/">Water Risk Monitor</a>
+        <nav class="top-nav-links" aria-label="Primary navigation">
+          <a class="top-nav-link active" href="/">News</a>
+          <a class="top-nav-link" href="/stocks">Stocks</a>
+          <a class="top-nav-link" href="/hydrology">Hydrology Live</a>
+          <a class="top-nav-link" href="/alerts">Alerts</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="layout">
+      <main class="feed">
+        <header class="feed-header">
+          <h1>Water News Monitor</h1>
+        </header>
+
+        <section id="news-list" class="news-list"></section>
+
+        <nav id="pagination" class="pagination"></nav>
+      </main>
+
+      <aside class="sidebar">
+        <section class="date-menu">
+          <h2>By Date</h2>
+          <ul id="date-list"></ul>
+        </section>
+
+        <section class="source-manager">
+          <div class="source-manager-head">
+            <h2>Sources</h2>
+            <button id="scan-now-btn" type="button">Scan All</button>
+          </div>
+          <span id="scan-status" class="scan-status"></span>
+          <ul id="source-list" class="source-list"></ul>
+
+          <form id="source-form" class="source-form">
+            <label>
+              Name
+              <input id="source-name" name="name" type="text" required maxlength="120" />
+            </label>
+            <label>
+              URL
+              <input id="source-url" name="url" type="url" required />
+            </label>
+            <label>
+              Interval (minutes)
+              <input
+                id="source-interval"
+                name="intervalMinutes"
+                type="number"
+                required
+                min="1"
+                value="30"
+              />
+            </label>
+            <button type="submit">Add Source</button>
+          </form>
+        </section>
+      </aside>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

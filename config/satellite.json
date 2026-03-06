@@ -1,0 +1,41 @@
+[
+{"id":"SENTINEL1_SURFACE_WATER","name":"Sentinel-1 Surface Water Extent","url":"https://sentinel.esa.int","api":"","topic":"surface water satellite","region":"global","reliability_score":10,"intervalMinutes":360},
+
+{"id":"SENTINEL2_LAKE_MONITORING","name":"Sentinel-2 Water Bodies","url":"https://land.copernicus.eu","api":"","topic":"lake monitoring","region":"global","reliability_score":10,"intervalMinutes":360},
+
+{"id":"LANDSAT_GLOBAL_WATER","name":"Landsat Global Surface Water","url":"https://global-surface-water.appspot.com","api":"","topic":"surface water satellite","region":"global","reliability_score":10,"intervalMinutes":720},
+
+{"id":"NASA_GRACE_GROUNDWATER","name":"NASA GRACE Groundwater","url":"https://grace.jpl.nasa.gov","api":"","topic":"groundwater depletion","region":"global","reliability_score":10,"intervalMinutes":720},
+
+{"id":"NASA_SWOT","name":"NASA Surface Water Ocean Topography","url":"https://swot.jpl.nasa.gov","api":"","topic":"river elevation","region":"global","reliability_score":10,"intervalMinutes":360},
+
+{"id":"NASA_GPM_RAINFALL","name":"NASA Global Precipitation Measurement","url":"https://gpm.nasa.gov","api":"","topic":"rainfall satellite","region":"global","reliability_score":10,"intervalMinutes":120},
+
+{"id":"COPERNICUS_WATER_BODIES","name":"Copernicus Water Bodies Dataset","url":"https://land.copernicus.eu/en/products/water-bodies","api":"","topic":"water bodies","region":"global","reliability_score":10,"intervalMinutes":360},
+
+{"id":"GLOBAL_SURFACE_WATER_TRANSITIONS","name":"Global Surface Water Transitions","url":"https://global-surface-water.appspot.com","api":"","topic":"water change monitoring","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"PLANETARY_COMPUTER_SATELLITES","name":"Microsoft Planetary Computer Satellite Data","url":"https://planetarycomputer.microsoft.com/catalog","api":"","topic":"satellite climate","region":"global","reliability_score":9,"intervalMinutes":360},
+
+{"id":"SENTINEL_HUB_COLLECTIONS","name":"Sentinel Hub Data Collections","url":"https://collections.sentinel-hub.com","api":"","topic":"satellite imagery","region":"global","reliability_score":9,"intervalMinutes":360},
+
+{"id":"WATER_CONFLICT_CHRONOLOGY","name":"Water Conflict Chronology","url":"https://pacinst.org/water-conflict-chronology","api":"","topic":"water conflict","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"RESOURCE_WATCH_WATER_CONFLICTS","name":"Resource Watch Water Conflict Map","url":"https://resourcewatch.org","api":"","topic":"water conflict","region":"global","reliability_score":9,"intervalMinutes":1440},
+
+{"id":"ACLED_CONFLICT_DATA","name":"ACLED Conflict Data","url":"https://acleddata.com","api":"","topic":"water conflict risk","region":"global","reliability_score":9,"intervalMinutes":360},
+
+{"id":"GLOBAL_DAM_WATCH","name":"Global Dam Watch","url":"https://globaldamwatch.org","api":"","topic":"dam infrastructure","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"GRAND_DAMS_DATABASE","name":"GRanD Reservoir Database","url":"https://globaldamwatch.org/grand","api":"","topic":"reservoir infrastructure","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"GLOBAL_RESERVOIR_STORAGE","name":"Global Reservoir Storage Monitoring","url":"https://waterdata.usgs.gov","api":"","topic":"reservoir monitoring","region":"global","reliability_score":10,"intervalMinutes":720},
+
+{"id":"HYDROSHEDS_GLOBAL","name":"HydroSHEDS Watershed Data","url":"https://www.hydrosheds.org","api":"","topic":"watershed mapping","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"GLEAM_EVAPOTRANSPIRATION","name":"GLEAM Evapotranspiration Dataset","url":"https://www.gleam.eu","api":"","topic":"water balance","region":"global","reliability_score":9,"intervalMinutes":1440},
+
+{"id":"IRRIGATION_MAP_GLOBAL","name":"Global Irrigated Areas Map","url":"https://www.fao.org/aquastat","api":"","topic":"irrigation demand","region":"global","reliability_score":9,"intervalMinutes":1440},
+
+{"id":"WATER_QUALITY_SATELLITE","name":"Copernicus Lake Water Quality","url":"https://registry.opendata.aws","api":"","topic":"water quality","region":"global","reliability_score":9,"intervalMinutes":360}
+]

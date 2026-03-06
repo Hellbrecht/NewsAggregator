@@ -1,0 +1,59 @@
+[
+{"id":"UN_WATER","name":"UN-Water","url":"https://www.unwater.org","rss":"https://www.unwater.org/news/rss.xml","topic":"water policy","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"UNESCO_WATER","name":"UNESCO Water","url":"https://www.unesco.org/en/water-security","rss":"https://www.unesco.org/en/news/rss.xml","topic":"water policy","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"WHO_WATER","name":"WHO Water Sanitation","url":"https://www.who.int","rss":"https://www.who.int/rss-feeds/news-english.xml","topic":"water health","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"WORLD_BANK_WATER","name":"World Bank Water","url":"https://www.worldbank.org/en/topic/water","rss":"https://www.worldbank.org/en/topic/water/rss","topic":"water infrastructure","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"FAO_WATER","name":"FAO Water","url":"https://www.fao.org/water","rss":"https://www.fao.org/news/rss/en","topic":"water agriculture","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"WRI","name":"World Resources Institute","url":"https://www.wri.org","rss":"https://www.wri.org/insights/rss.xml","topic":"water risk","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"PACIFIC_INSTITUTE","name":"Pacific Institute","url":"https://pacinst.org","rss":"https://pacinst.org/feed","topic":"water risk","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"CIRCLE_OF_BLUE","name":"Circle of Blue","url":"https://www.circleofblue.org","rss":"https://www.circleofblue.org/feed","topic":"water crisis","region":"global","reliability_score":10,"intervalMinutes":60},
+{"id":"YALE_E360","name":"Yale Environment 360","url":"https://e360.yale.edu","rss":"https://e360.yale.edu/feed","topic":"climate water","region":"global","reliability_score":9,"intervalMinutes":60},
+{"id":"MONGABAY","name":"Mongabay Environmental News","url":"https://news.mongabay.com","rss":"https://news.mongabay.com/feed","topic":"environment water","region":"global","reliability_score":9,"intervalMinutes":60},
+
+{"id":"REUTERS_ENV","name":"Reuters Sustainability","url":"https://www.reuters.com/sustainability","rss":"https://www.reutersagency.com/feed/?best-topics=environment","topic":"climate water","region":"global","reliability_score":10,"intervalMinutes":30},
+{"id":"GUARDIAN_ENV","name":"Guardian Environment","url":"https://www.theguardian.com/environment","rss":"https://www.theguardian.com/environment/rss","topic":"climate water","region":"global","reliability_score":9,"intervalMinutes":30},
+{"id":"BLOOMBERG_GREEN","name":"Bloomberg Green","url":"https://www.bloomberg.com/green","rss":"https://feeds.bloomberg.com/green/news.rss","topic":"water economy","region":"global","reliability_score":9,"intervalMinutes":30},
+{"id":"BBC_ENV","name":"BBC Environment","url":"https://www.bbc.com/news/science_and_environment","rss":"http://feeds.bbci.co.uk/news/science_and_environment/rss.xml","topic":"environment water","region":"global","reliability_score":9,"intervalMinutes":30},
+{"id":"NYT_CLIMATE","name":"NYTimes Climate","url":"https://www.nytimes.com/section/climate","rss":"https://rss.nytimes.com/services/xml/rss/nyt/Climate.xml","topic":"climate water","region":"global","reliability_score":9,"intervalMinutes":30},
+
+{"id":"SCIENCEDAILY_WATER","name":"ScienceDaily Water","url":"https://www.sciencedaily.com","rss":"https://www.sciencedaily.com/rss/earth_climate/water.xml","topic":"water science","region":"global","reliability_score":9,"intervalMinutes":60},
+
+{"id":"NASA_WATER","name":"NASA Earth Water","url":"https://earth.nasa.gov","rss":"https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss","topic":"water climate","region":"global","reliability_score":10,"intervalMinutes":120},
+{"id":"USGS_WATER","name":"USGS Water","url":"https://www.usgs.gov","rss":"https://www.usgs.gov/news/rss.xml","topic":"water science","region":"usa","reliability_score":10,"intervalMinutes":120},
+{"id":"NOAA_CLIMATE","name":"NOAA Climate","url":"https://www.noaa.gov","rss":"https://www.noaa.gov/rss.xml","topic":"climate water","region":"usa","reliability_score":10,"intervalMinutes":120},
+{"id":"EPA_WATER","name":"US EPA Water","url":"https://www.epa.gov","rss":"https://www.epa.gov/newsreleases/search/rss","topic":"water pollution","region":"usa","reliability_score":10,"intervalMinutes":120},
+
+{"id":"EU_ENV","name":"European Environment Agency","url":"https://www.eea.europa.eu","rss":"https://www.eea.europa.eu/highlights/rss","topic":"water environment","region":"europe","reliability_score":10,"intervalMinutes":120},
+
+{"id":"DW_ENV","name":"Deutsche Welle Environment","url":"https://www.dw.com/en/environment","rss":"https://rss.dw.com/rdf/rss-en-environment","topic":"climate water","region":"global","reliability_score":9,"intervalMinutes":60},
+
+{"id":"ALJAZEERA_CLIMATE","name":"Al Jazeera Climate","url":"https://www.aljazeera.com/climate-crisis","rss":"https://www.aljazeera.com/xml/rss/all.xml","topic":"climate water","region":"global","reliability_score":8,"intervalMinutes":60},
+
+{"id":"THE_CONVERSATION_WATER","name":"The Conversation Water","url":"https://theconversation.com/global/topics/water","rss":"https://theconversation.com/global/topics/water/articles.atom","topic":"water science","region":"global","reliability_score":9,"intervalMinutes":60},
+
+{"id":"CLIMATE_HOME","name":"Climate Home News","url":"https://www.climatechangenews.com","rss":"https://www.climatechangenews.com/feed","topic":"climate water","region":"global","reliability_score":8,"intervalMinutes":60},
+
+{"id":"WATERWORLD","name":"WaterWorld","url":"https://www.waterworld.com","rss":"https://www.waterworld.com/rss","topic":"water infrastructure","region":"global","reliability_score":8,"intervalMinutes":60},
+
+{"id":"WATER_TECH","name":"Water Technology Online","url":"https://www.watertechonline.com","rss":"https://www.watertechonline.com/rss","topic":"water treatment","region":"global","reliability_score":8,"intervalMinutes":60},
+
+{"id":"DESALINATION_BIZ","name":"Desalination Biz","url":"https://www.desalination.biz","rss":"https://www.desalination.biz/rss","topic":"desalination","region":"global","reliability_score":8,"intervalMinutes":60},
+
+{"id":"SMART_WATER_MAG","name":"Smart Water Magazine","url":"https://smartwatermagazine.com","rss":"https://smartwatermagazine.com/rss.xml","topic":"water infrastructure","region":"global","reliability_score":8,"intervalMinutes":60},
+
+{"id":"GLOBAL_WATER_INTEL","name":"Global Water Intelligence","url":"https://www.globalwaterintel.com","rss":"https://www.globalwaterintel.com/rss.xml","topic":"water market","region":"global","reliability_score":9,"intervalMinutes":60},
+
+{"id":"WATER_CANADA","name":"Water Canada","url":"https://www.watercanada.net","rss":"https://www.watercanada.net/feed","topic":"water policy","region":"canada","reliability_score":8,"intervalMinutes":60},
+
+{"id":"AQUEDUCT_WRI","name":"Aqueduct Water Risk Atlas","url":"https://www.wri.org/aqueduct","rss":"","topic":"water risk data","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"GLOBAL_FLOOD_OBSERVATORY","name":"Global Flood Observatory","url":"https://floodobservatory.colorado.edu","rss":"","topic":"flood monitoring","region":"global","reliability_score":10,"intervalMinutes":360},
+
+{"id":"GRDC_RIVER_DATA","name":"Global Runoff Data Centre","url":"https://www.bafg.de/GRDC","rss":"","topic":"river monitoring","region":"global","reliability_score":10,"intervalMinutes":1440},
+
+{"id":"NOAA_DROUGHT","name":"US Drought Monitor","url":"https://droughtmonitor.unl.edu","rss":"","topic":"drought monitoring","region":"usa","reliability_score":10,"intervalMinutes":360},
+
+{"id":"GLOBAL_DROUGHT_INFO","name":"Global Drought Information System","url":"https://www.drought.gov","rss":"https://www.drought.gov/news/rss.xml","topic":"drought monitoring","region":"global","reliability_score":10,"intervalMinutes":120},
+
+{"id":"WATER_CONFLICTS","name":"Water Conflict Chronology","url":"https://pacinst.org/water-conflict-chronology","rss":"","topic":"water conflict","region":"global","reliability_score":10,"intervalMinutes":1440}
+]

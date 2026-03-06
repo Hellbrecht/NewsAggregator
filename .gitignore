@@ -1,0 +1,38 @@
+node_modules/
+
+# Build artifacts
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temp files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+*.tmp
+*.temp
+
+# Runtime data
+data/news-entries.json
+data/ingested/
+data/cache/
+
+# Tooling caches
+.next/
+.turbo/
+.parcel-cache/
+.vite/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

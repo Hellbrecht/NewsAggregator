@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hydrology Live | Water Risk News</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="top-nav-inner">
+        <a class="top-nav-brand" href="/">Water Risk Monitor</a>
+        <nav class="top-nav-links" aria-label="Primary navigation">
+          <a class="top-nav-link" href="/">News</a>
+          <a class="top-nav-link" href="/stocks">Stocks</a>
+          <a class="top-nav-link active" href="/hydrology">Hydrology Live</a>
+          <a class="top-nav-link" href="/alerts">Alerts</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="layout single-column">
+      <main class="feed hydrology-page">
+        <header class="feed-header">
+          <h1>Hydrology Live</h1>
+          <p>Real-time hydrology workspace for river, reservoir, rainfall, and alert signals.</p>
+          <div class="hydrology-actions">
+            <button id="hydrology-refresh-btn" type="button">Refresh Data</button>
+            <span id="hydrology-status" class="scan-status">Loading live hydrology feeds...</span>
+          </div>
+        </header>
+
+        <section id="hydrology-grid" class="hydrology-grid" aria-label="Real-time hydrology modules"></section>
+      </main>
+    </div>
+
+    <script src="/hydrology.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "epa",
+    "name": "US EPA Water News",
+    "url": "https://www.epa.gov/newsreleases",
+    "intervalMinutes": 30
+  },
+  {
+    "id": "nws",
+    "name": "NOAA Weather.gov Alerts",
+    "url": "https://www.weather.gov/",
+    "intervalMinutes": 30
+  },
+  {
+    "id": "who-newsroom",
+    "name": "WHO Newsroom",
+    "url": "https://www.who.int/news-room",
+    "intervalMinutes": 60
+  },
+  {
+    "id": "un-water",
+    "name": "UN-Water News",
+    "url": "https://www.unwater.org/news",
+    "intervalMinutes": 60
+  }
+]

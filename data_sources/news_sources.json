@@ -1,0 +1,942 @@
+[
+  {
+    "id": "un-water",
+    "name": "UN-Water",
+    "url": "https://www.unwater.org",
+    "topic": "water policy",
+    "region": "global",
+    "reliability_score": 10,
+    "intervalMinutes": 120,
+    "rss": "https://www.unwater.org/rss.xml"
+  },
+  {
+    "id": "who-water",
+    "name": "WHO Water Sanitation",
+    "url": "https://www.who.int",
+    "topic": "water health",
+    "region": "global",
+    "reliability_score": 10,
+    "intervalMinutes": 120,
+    "rss": "https://www.who.int/rss-feeds/news-english.xml"
+  },
+  {
+    "id": "world-bank-water",
+    "name": "World Bank Water",
+    "url": "https://www.worldbank.org/en/topic/water",
+    "topic": "water infrastructure",
+    "region": "global",
+    "reliability_score": 10,
+    "intervalMinutes": 120,
+    "rss": "https://www.worldbank.org/en/topic/water/rss"
+  },
+  {
+    "id": "circle-of-blue",
+    "name": "Circle of Blue",
+    "url": "https://www.circleofblue.org",
+    "topic": "water crisis",
+    "region": "global",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.circleofblue.org/feed"
+  },
+  {
+    "id": "grist",
+    "name": "Grist",
+    "url": "https://www.grist.org",
+    "topic": "climate water",
+    "region": "global",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://grist.org/feed/"
+  },
+  {
+    "id": "reuters-env",
+    "name": "Reuters Best Feed",
+    "url": "https://www.reutersagency.com/en/reutersbest/reuters-best-rss-feeds/",
+    "topic": "environment",
+    "region": "global",
+    "reliability_score": 9,
+    "intervalMinutes": 30,
+    "rss": "https://reutersbest.com/feed/"
+  },
+  {
+    "id": "globe-world",
+    "name": "The Globe and Mail - World",
+    "url": "https://www.theglobeandmail.com/world/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/world/"
+  },
+  {
+    "id": "globe-health",
+    "name": "The Globe and Mail - Health",
+    "url": "https://www.theglobeandmail.com/life/health-and-fitness/",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/life/health-and-fitness/"
+  },
+  {
+    "id": "globe-business",
+    "name": "The Globe and Mail - Business",
+    "url": "https://www.theglobeandmail.com/business/",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/business/"
+  },
+  {
+    "id": "globe-technology",
+    "name": "The Globe and Mail - Technology",
+    "url": "https://www.theglobeandmail.com/business/technology/",
+    "topic": "technology",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/business/technology/"
+  },
+  {
+    "id": "globalnews-world",
+    "name": "Global News - World",
+    "url": "https://globalnews.ca/world/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://globalnews.ca/world/feed/"
+  },
+  {
+    "id": "globalnews-environment",
+    "name": "Global News - Environment",
+    "url": "https://globalnews.ca/environment/",
+    "topic": "environment",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://globalnews.ca/environment/feed/"
+  },
+  {
+    "id": "globalnews-health",
+    "name": "Global News - Health",
+    "url": "https://globalnews.ca/health/",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://globalnews.ca/health/feed/"
+  },
+  {
+    "id": "globalnews-business",
+    "name": "Global News - Business",
+    "url": "https://globalnews.ca/money/",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://globalnews.ca/money/feed/"
+  },
+  {
+    "id": "globalnews-technology",
+    "name": "Global News - Technology",
+    "url": "https://globalnews.ca/tech/",
+    "topic": "technology",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://globalnews.ca/tech/feed/"
+  },
+  {
+    "id": "nationalpost-world",
+    "name": "National Post - World",
+    "url": "https://nationalpost.com/category/news/world/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://nationalpost.com/category/news/world/feed/"
+  },
+  {
+    "id": "nationalpost-environment",
+    "name": "National Post - Environment",
+    "url": "https://nationalpost.com/category/news/environment/",
+    "topic": "environment",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://nationalpost.com/category/news/environment/feed/"
+  },
+  {
+    "id": "nationalpost-health",
+    "name": "National Post - Health",
+    "url": "https://nationalpost.com/category/health/",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://nationalpost.com/category/health/feed/"
+  },
+  {
+    "id": "nationalpost-business",
+    "name": "National Post - Business",
+    "url": "https://nationalpost.com/category/business/",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://nationalpost.com/category/business/feed/"
+  },
+  {
+    "id": "nationalpost-technology",
+    "name": "National Post - Technology",
+    "url": "https://nationalpost.com/category/technology/",
+    "topic": "technology",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://nationalpost.com/category/technology/feed/"
+  },
+  {
+    "id": "nyt-world",
+    "name": "New York Times - World",
+    "url": "https://www.nytimes.com/section/world",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+  },
+  {
+    "id": "nyt-environment",
+    "name": "New York Times - Climate",
+    "url": "https://www.nytimes.com/section/climate",
+    "topic": "environment",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Climate.xml"
+  },
+  {
+    "id": "nyt-health",
+    "name": "New York Times - Health",
+    "url": "https://www.nytimes.com/section/health",
+    "topic": "health",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Health.xml"
+  },
+  {
+    "id": "nyt-business",
+    "name": "New York Times - Business",
+    "url": "https://www.nytimes.com/section/business",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml"
+  },
+  {
+    "id": "nyt-technology",
+    "name": "New York Times - Technology",
+    "url": "https://www.nytimes.com/section/technology",
+    "topic": "technology",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"
+  },
+  {
+    "id": "wapo-world",
+    "name": "Washington Post - World",
+    "url": "https://www.washingtonpost.com/world/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.washingtonpost.com/rss/world"
+  },
+  {
+    "id": "wapo-health",
+    "name": "Washington Post - Health",
+    "url": "https://www.washingtonpost.com/national/health-science/",
+    "topic": "health",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.washingtonpost.com/rss/national/health-science"
+  },
+  {
+    "id": "wapo-business",
+    "name": "Washington Post - Business",
+    "url": "https://www.washingtonpost.com/business/",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.washingtonpost.com/rss/business"
+  },
+  {
+    "id": "wapo-technology",
+    "name": "Washington Post - Technology",
+    "url": "https://www.washingtonpost.com/business/technology/",
+    "topic": "technology",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.washingtonpost.com/rss/business/technology"
+  },
+  {
+    "id": "cnn-world",
+    "name": "CNN - World",
+    "url": "https://www.cnn.com/world",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45,
+    "rss": "http://rss.cnn.com/rss/cnn_world.rss"
+  },
+  {
+    "id": "cnn-health",
+    "name": "CNN - Health",
+    "url": "https://www.cnn.com/health",
+    "topic": "health",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45,
+    "rss": "http://rss.cnn.com/rss/cnn_health.rss"
+  },
+  {
+    "id": "cnn-business",
+    "name": "CNN - Business",
+    "url": "https://www.cnn.com/business",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45,
+    "rss": "http://rss.cnn.com/rss/money_latest.rss"
+  },
+  {
+    "id": "cnn-technology",
+    "name": "CNN - Technology",
+    "url": "https://www.cnn.com/business/tech",
+    "topic": "technology",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45,
+    "rss": "http://rss.cnn.com/rss/cnn_tech.rss"
+  },
+  {
+    "id": "npr-world",
+    "name": "NPR - World",
+    "url": "https://www.npr.org/sections/world/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.npr.org/1004/rss.xml"
+  },
+  {
+    "id": "npr-environment",
+    "name": "NPR - Environment",
+    "url": "https://www.npr.org/sections/environment/",
+    "topic": "environment",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.npr.org/1025/rss.xml"
+  },
+  {
+    "id": "npr-health",
+    "name": "NPR - Health",
+    "url": "https://www.npr.org/sections/health/",
+    "topic": "health",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.npr.org/1027/rss.xml"
+  },
+  {
+    "id": "npr-business",
+    "name": "NPR - Business",
+    "url": "https://www.npr.org/sections/business/",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.npr.org/1006/rss.xml"
+  },
+  {
+    "id": "npr-technology",
+    "name": "NPR - Technology",
+    "url": "https://www.npr.org/sections/technology/",
+    "topic": "technology",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.npr.org/1019/rss.xml"
+  },
+  {
+    "id": "wsj-world",
+    "name": "Wall Street Journal - World",
+    "url": "https://www.wsj.com/news/world",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://feeds.a.dj.com/rss/RSSWorldNews.xml"
+  },
+  {
+    "id": "wsj-business",
+    "name": "Wall Street Journal - US Business",
+    "url": "https://www.wsj.com/business",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml"
+  },
+  {
+    "id": "wsj-markets",
+    "name": "Wall Street Journal - Markets",
+    "url": "https://www.wsj.com/finance",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"
+  },
+  {
+    "id": "bbc-world",
+    "name": "BBC News - World",
+    "url": "https://www.bbc.com/news/world",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.bbci.co.uk/news/world/rss.xml"
+  },
+  {
+    "id": "bbc-environment",
+    "name": "BBC News - Science & Environment",
+    "url": "https://www.bbc.com/news/science_and_environment",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
+  },
+  {
+    "id": "bbc-health",
+    "name": "BBC News - Health",
+    "url": "https://www.bbc.com/news/health",
+    "topic": "health",
+    "region": "europe",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.bbci.co.uk/news/health/rss.xml"
+  },
+  {
+    "id": "bbc-business",
+    "name": "BBC News - Business",
+    "url": "https://www.bbc.com/news/business",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.bbci.co.uk/news/business/rss.xml"
+  },
+  {
+    "id": "bbc-technology",
+    "name": "BBC News - Technology",
+    "url": "https://www.bbc.com/news/technology",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 10,
+    "intervalMinutes": 45,
+    "rss": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+  },
+  {
+    "id": "guardian-world",
+    "name": "The Guardian - World",
+    "url": "https://www.theguardian.com/world",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://www.theguardian.com/world/rss"
+  },
+  {
+    "id": "guardian-environment",
+    "name": "The Guardian - Environment",
+    "url": "https://www.theguardian.com/environment",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://www.theguardian.com/environment/rss"
+  },
+  {
+    "id": "guardian-health",
+    "name": "The Guardian - Health & Wellbeing",
+    "url": "https://www.theguardian.com/lifeandstyle/health-and-wellbeing",
+    "topic": "health",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://www.theguardian.com/lifeandstyle/health-and-wellbeing/rss"
+  },
+  {
+    "id": "guardian-business",
+    "name": "The Guardian - Business",
+    "url": "https://www.theguardian.com/business",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://www.theguardian.com/business/rss"
+  },
+  {
+    "id": "guardian-technology",
+    "name": "The Guardian - Technology",
+    "url": "https://www.theguardian.com/technology",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 45,
+    "rss": "https://www.theguardian.com/technology/rss"
+  },
+  {
+    "id": "dw-world",
+    "name": "Deutsche Welle - Top",
+    "url": "https://www.dw.com/en/top-stories/s-9097",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://rss.dw.com/rdf/rss-en-top"
+  },
+  {
+    "id": "dw-environment",
+    "name": "Deutsche Welle - Environment",
+    "url": "https://www.dw.com/en/environment/s-11499",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://rss.dw.com/rdf/rss-en-env"
+  },
+  {
+    "id": "dw-business",
+    "name": "Deutsche Welle - Business",
+    "url": "https://www.dw.com/en/business/s-1431",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://rss.dw.com/rdf/rss-en-bus"
+  },
+  {
+    "id": "dw-science",
+    "name": "Deutsche Welle - Science",
+    "url": "https://www.dw.com/en/science/s-20358",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://rss.dw.com/rdf/rss-en-sci"
+  },
+  {
+    "id": "france24-world",
+    "name": "France 24 - World",
+    "url": "https://www.france24.com/en/",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://www.france24.com/en/rss"
+  },
+  {
+    "id": "france24-environment",
+    "name": "France 24 - Environment",
+    "url": "https://www.france24.com/en/environment/",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://www.france24.com/en/environment/rss"
+  },
+  {
+    "id": "france24-health",
+    "name": "France 24 - Health",
+    "url": "https://www.france24.com/en/tag/health/",
+    "topic": "health",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://www.france24.com/en/health/rss"
+  },
+  {
+    "id": "france24-business-tech",
+    "name": "France 24 - Business & Tech",
+    "url": "https://www.france24.com/en/business-tech/",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://www.france24.com/en/business-tech/rss"
+  },
+  {
+    "id": "euronews-world",
+    "name": "Euronews - News",
+    "url": "https://www.euronews.com/news/international",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://www.euronews.com/rss?level=theme&name=news"
+  },
+  {
+    "id": "euronews-business",
+    "name": "Euronews - Business",
+    "url": "https://www.euronews.com/business",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://www.euronews.com/rss?level=theme&name=business"
+  },
+  {
+    "id": "ft-world",
+    "name": "Financial Times - World",
+    "url": "https://www.ft.com/world",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.ft.com/world?format=rss"
+  },
+  {
+    "id": "ft-environment",
+    "name": "Financial Times - Climate Capital",
+    "url": "https://www.ft.com/climate-capital",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.ft.com/climate-capital?format=rss"
+  },
+  {
+    "id": "ft-health",
+    "name": "Financial Times - Health",
+    "url": "https://www.ft.com/health",
+    "topic": "health",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.ft.com/health?format=rss"
+  },
+  {
+    "id": "ft-business",
+    "name": "Financial Times - Companies",
+    "url": "https://www.ft.com/companies",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.ft.com/companies?format=rss"
+  },
+  {
+    "id": "ft-technology",
+    "name": "Financial Times - Technology",
+    "url": "https://www.ft.com/technology",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://www.ft.com/technology?format=rss"
+  },
+  {
+    "id": "montrealgazette-world",
+    "name": "Montreal Gazette - World",
+    "url": "https://montrealgazette.com/category/news/world/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://montrealgazette.com/category/news/world/feed/"
+  },
+  {
+    "id": "montrealgazette-health",
+    "name": "Montreal Gazette - Health",
+    "url": "https://montrealgazette.com/category/life/health/",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://montrealgazette.com/category/life/health/feed/"
+  },
+  {
+    "id": "calgaryherald-business",
+    "name": "Calgary Herald - Business",
+    "url": "https://calgaryherald.com/category/business/",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60,
+    "rss": "https://calgaryherald.com/category/business/feed/"
+  },
+  {
+    "id": "financialpost-technology",
+    "name": "Financial Post - Technology",
+    "url": "https://financialpost.com/category/fp-tech-desk/",
+    "topic": "technology",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 60,
+    "rss": "https://financialpost.com/category/fp-tech-desk/feed/"
+  },
+  {
+    "id": "radio-canada-international",
+    "name": "Radio-Canada Info - International",
+    "url": "https://ici.radio-canada.ca/info/international",
+    "rss": "https://ici.radio-canada.ca/info/rss/international/en-continu",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "radio-canada-environnement",
+    "name": "Radio-Canada Info - Environnement",
+    "url": "https://ici.radio-canada.ca/info/environnement",
+    "rss": "https://ici.radio-canada.ca/info/rss/environnement/en-continu",
+    "topic": "environment",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "radio-canada-sante",
+    "name": "Radio-Canada Info - Sante",
+    "url": "https://ici.radio-canada.ca/info/sante",
+    "rss": "https://ici.radio-canada.ca/info/rss/sante/en-continu",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "radio-canada-economie",
+    "name": "Radio-Canada Info - Economie",
+    "url": "https://ici.radio-canada.ca/info/economie",
+    "rss": "https://ici.radio-canada.ca/info/rss/economie/en-continu",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "radio-canada-techno",
+    "name": "Radio-Canada Info - Techno",
+    "url": "https://ici.radio-canada.ca/info/techno",
+    "rss": "https://ici.radio-canada.ca/info/rss/techno/en-continu",
+    "topic": "technology",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "rci-francais",
+    "name": "RCI Francais",
+    "url": "https://www.rcinet.ca/fr/",
+    "rss": "https://www.rcinet.ca/fr/feed/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 90
+  },
+  {
+    "id": "tva-nouvelles-actualites",
+    "name": "TVA Nouvelles - Actualites",
+    "url": "https://www.tvanouvelles.ca/actualites",
+    "rss": "https://www.tvanouvelles.ca/actualites/rss.xml",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 7,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "journal-montreal-actualite",
+    "name": "Journal de Montreal - Actualite",
+    "url": "https://www.journaldemontreal.com/actualite",
+    "rss": "https://www.journaldemontreal.com/actualite/rss.xml",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 7,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "journal-montreal-sante",
+    "name": "Journal de Montreal - Sante",
+    "url": "https://www.journaldemontreal.com/actualite/sante",
+    "rss": "https://www.journaldemontreal.com/actualite/sante/rss.xml",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 7,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lemonde-international",
+    "name": "Le Monde - International",
+    "url": "https://www.lemonde.fr/international/",
+    "rss": "https://www.lemonde.fr/international/rss_full.xml",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lemonde-planete",
+    "name": "Le Monde - Planete",
+    "url": "https://www.lemonde.fr/planete/",
+    "rss": "https://www.lemonde.fr/planete/rss_full.xml",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lemonde-sante",
+    "name": "Le Monde - Sante",
+    "url": "https://www.lemonde.fr/sante/",
+    "rss": "https://www.lemonde.fr/sante/rss_full.xml",
+    "topic": "health",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lemonde-economie",
+    "name": "Le Monde - Economie",
+    "url": "https://www.lemonde.fr/economie/",
+    "rss": "https://www.lemonde.fr/economie/rss_full.xml",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lemonde-pixels",
+    "name": "Le Monde - Pixels",
+    "url": "https://www.lemonde.fr/pixels/",
+    "rss": "https://www.lemonde.fr/pixels/rss_full.xml",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lefigaro-international",
+    "name": "Le Figaro - International",
+    "url": "https://www.lefigaro.fr/international",
+    "rss": "https://www.lefigaro.fr/rss/figaro_international.xml",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lefigaro-environnement",
+    "name": "Le Figaro - Environnement",
+    "url": "https://www.lefigaro.fr/sciences/environnement",
+    "rss": "https://www.lefigaro.fr/rss/figaro_environnement.xml",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lefigaro-sante",
+    "name": "Le Figaro - Sante",
+    "url": "https://sante.lefigaro.fr",
+    "rss": "https://www.lefigaro.fr/rss/figaro_sante.xml",
+    "topic": "health",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lefigaro-economie",
+    "name": "Le Figaro - Economie",
+    "url": "https://www.lefigaro.fr/economie",
+    "rss": "https://www.lefigaro.fr/rss/figaro_economie.xml",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lefigaro-sciences",
+    "name": "Le Figaro - Sciences",
+    "url": "https://www.lefigaro.fr/sciences",
+    "rss": "https://www.lefigaro.fr/rss/figaro_sciences.xml",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "liberation-actualites",
+    "name": "Liberation - Actualites",
+    "url": "https://www.liberation.fr",
+    "rss": "https://www.liberation.fr/arc/outboundfeeds/rss/",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "france24-fr-monde",
+    "name": "France 24 FR - Monde",
+    "url": "https://www.france24.com/fr/",
+    "rss": "https://www.france24.com/fr/rss",
+    "topic": "world",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "france24-fr-environnement",
+    "name": "France 24 FR - Environnement",
+    "url": "https://www.france24.com/fr/environnement/",
+    "rss": "https://www.france24.com/fr/environnement/rss",
+    "topic": "environment",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "france24-fr-economie",
+    "name": "France 24 FR - Economie",
+    "url": "https://www.france24.com/fr/economie/",
+    "rss": "https://www.france24.com/fr/economie/rss",
+    "topic": "business",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "france24-fr-eco-tech",
+    "name": "France 24 FR - Eco Tech",
+    "url": "https://www.france24.com/fr/eco-tech/",
+    "rss": "https://www.france24.com/fr/eco-tech/rss",
+    "topic": "technology",
+    "region": "europe",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  }
+]

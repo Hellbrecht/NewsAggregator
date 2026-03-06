@@ -1,0 +1,106 @@
+{
+  "north_america": {
+    "usa": {
+      "utilities": [
+        { "ticker": "AWK", "name": "American Water Works", "exchange": "NYSE", "description": "Largest publicly traded U.S. water and wastewater utility." },
+        { "ticker": "WTRG", "name": "Essential Utilities", "exchange": "NYSE", "description": "Water and natural gas services across multiple states." },
+        { "ticker": "AWR", "name": "American States Water", "exchange": "NYSE", "description": "Diversified utility with a long history of dividend increases." },
+        { "ticker": "CWT", "name": "California Water Service", "exchange": "NYSE", "description": "Large U.S. water utility serving the West Coast." },
+        { "ticker": "SJW", "name": "SJW Group", "exchange": "NYSE", "description": "Operates water systems in CA, CT, ME, and TX." },
+        { "ticker": "MSEX", "name": "Middlesex Water", "exchange": "NASDAQ", "description": "Regulated water and wastewater services in NJ and DE." },
+        { "ticker": "YORW", "name": "York Water Company", "exchange": "NASDAQ", "description": "Oldest investor-owned water utility in the U.S." },
+        { "ticker": "CWCO", "name": "Consolidated Water", "exchange": "NASDAQ", "description": "Operates desalination plants and water distribution, primarily in the Caribbean." }
+      ],
+      "technology_and_infrastructure": [
+        { "ticker": "XYL", "name": "Xylem Inc.", "exchange": "NYSE", "description": "Global leader in water technology (transport, treatment, testing)." },
+        { "ticker": "PNR", "name": "Pentair", "exchange": "NYSE", "description": "Water filtration, pool equipment, and sustainable solutions." },
+        { "ticker": "BMI", "name": "Badger Meter", "exchange": "NYSE", "description": "Flow measurement and smart water metering technology." },
+        { "ticker": "WTS", "name": "Watts Water Technologies", "exchange": "NYSE", "description": "Plumbing, heating, and water quality products." },
+        { "ticker": "MWA", "name": "Mueller Water Products", "exchange": "NYSE", "description": "Water transmission and distribution products (valves, hydrants)." },
+        { "ticker": "WMS", "name": "Advanced Drainage Systems", "exchange": "NYSE", "description": "Water management and drainage products." },
+        { "ticker": "ITRI", "name": "Itron", "exchange": "NASDAQ", "description": "Technology and services for energy and water resource management." },
+        { "ticker": "TTEK", "name": "Tetra Tech", "exchange": "NASDAQ", "description": "Engineering and consulting for water and environmental projects." }
+      ],
+      "etfs": [
+        { "ticker": "PHO", "name": "Invesco Water Resources ETF", "exchange": "NASDAQ", "description": "Focuses on U.S. companies in water purification and conservation." },
+        { "ticker": "FIW", "name": "First Trust Water ETF", "exchange": "NYSE Arca", "description": "Tracks the ISE Clean Edge Water Index." },
+        { "ticker": "CGW", "name": "Invesco S&P Global Water Index ETF", "exchange": "NYSE Arca", "description": "Exposure to global water utilities and infrastructure." },
+        { "ticker": "AQWA", "name": "Global X Clean Water ETF", "exchange": "NASDAQ", "description": "Invests in companies advancing clean water through technology." }
+      ]
+    },
+    "canada": {
+      "utilities_and_infrastructure": [
+        { "ticker": "AQN", "name": "Algonquin Power & Utilities", "exchange": "TSX", "description": "Major utility provider with regulated water and wastewater systems." },
+        { "ticker": "PRMW", "name": "Primo Water Corporation", "exchange": "TSX", "description": "Pure-play water solutions (bottled, dispensers, filtration)." },
+        { "ticker": "ANRG", "name": "Anaergia Inc.", "exchange": "TSX", "description": "Converts organic waste into renewable gas and clean water." },
+        { "ticker": "CU", "name": "Canadian Utilities (ATCO)", "exchange": "TSX", "description": "Operates industrial and municipal water infrastructure." }
+      ],
+      "water_technology": [
+        { "ticker": "BQE", "name": "BQE Water Inc.", "exchange": "TSXV", "description": "Water treatment for mining and metallurgical industries." },
+        { "ticker": "WATR", "name": "Current Water Technologies", "exchange": "TSXV", "description": "Electrochemical wastewater treatment technologies." },
+        { "ticker": "FWTC", "name": "Forward Water Technologies", "exchange": "TSXV", "description": "Industrial wastewater recycling via Forward Osmosis." },
+        { "ticker": "BLM", "name": "BluMetric Environmental", "exchange": "TSXV", "description": "Water and wastewater treatment design and engineering." }
+      ]
+    },
+    "mexico": {
+      "water_solutions": [
+        { "ticker": "AGUA", "name": "Grupo Rotoplas", "exchange": "BMV", "description": "Leading water solutions in Latin America (storage, treatment, purification)." },
+        { "ticker": "GCARSO", "name": "Grupo Carso", "exchange": "BMV", "description": "Conglomerate involved in major water and hydraulic infrastructure projects." }
+      ]
+    }
+  },
+  "europe": {
+    "france": [
+      { "ticker": "VIE", "name": "Veolia Environnement", "exchange": "Euronext Paris", "description": "The world's largest water and environmental services provider." },
+      { "ticker": "SEV", "name": "Suez (Historical/Veolia)", "exchange": "Euronext Paris", "description": "Major player in water and waste management (merged with/acquired by Veolia/Consortium)." }
+    ],
+    "united_kingdom": [
+      { "ticker": "SVT", "name": "Severn Trent", "exchange": "LSE", "description": "Regulated water and wastewater utility serving the UK Midlands." },
+      { "ticker": "UU.", "name": "United Utilities Group", "exchange": "LSE", "description": "Operates the water and wastewater network in North West England." },
+      { "ticker": "PNN", "name": "Pennon Group", "exchange": "LSE", "description": "Parent company of South West Water and Bristol Water." }
+    ],
+    "germany": [
+      { "ticker": "KSB", "name": "KSB SE & Co. KGaA", "exchange": "Xetra", "description": "Manufacturer of pumps and valves used in water transport and treatment." }
+    ],
+    "greece": [
+      { "ticker": "EYP", "name": "Athens Water Supply & Sewerage", "exchange": "Athens", "description": "Main water utility for the Athens metropolitan area." }
+    ]
+  },
+  "asia": {
+    "japan": [
+      { "ticker": "6370", "name": "Kurita Water Industries", "exchange": "TSE", "description": "Global leader in water treatment chemicals and facilities." },
+      { "ticker": "6367", "name": "Daikin Industries", "exchange": "TSE", "description": "Involved in water heating and filtration systems." }
+    ],
+    "china_hong_kong": [
+      { "ticker": "0371", "name": "Beijing Enterprises Water Group", "exchange": "HKEX", "description": "Major Chinese water and environmental service provider." },
+      { "ticker": "0855", "name": "China Water Affairs Group", "exchange": "HKEX", "description": "Urban water supply and pipeline construction in China." },
+      { "ticker": "0270", "name": "Guangdong Investment", "exchange": "HKEX", "description": "Operates the Dongshen Water Supply Project to Hong Kong." },
+      { "ticker": "1857", "name": "China Everbright Water", "exchange": "HKEX/SGX", "description": "Specializes in wastewater treatment and sponge city construction." }
+    ],
+    "singapore": [
+      { "ticker": "BHK", "name": "SIIC Environment Holdings", "exchange": "SGX/HKEX", "description": "Wastewater treatment and water supply operations in China." }
+    ]
+  },
+  "oceania": {
+    "australia": [
+      { "ticker": "RWC", "name": "Reliance Worldwide Corp", "exchange": "ASX", "description": "Global manufacturer of water flow and plumbing products." },
+      { "ticker": "CNQ", "name": "Clean TeQ Water", "exchange": "ASX", "description": "Advanced wastewater treatment and metals recovery solutions." },
+      { "ticker": "WAT", "name": "Waterco", "exchange": "ASX", "description": "Water treatment and swimming pool equipment manufacturer." },
+      { "ticker": "FLC", "name": "Fluence Corporation", "exchange": "ASX", "description": "Decentralized water and wastewater treatment solutions." },
+      { "ticker": "DEM", "name": "De.mem", "exchange": "ASX", "description": "Membrane-based water treatment systems." }
+    ]
+  },
+  "south_america": {
+    "brazil": [
+      { "ticker": "SBSP3", "name": "SABESP", "exchange": "B3", "description": "One of the world's largest sanitation companies (São Paulo)." },
+      { "ticker": "CSMG3", "name": "COPASA", "exchange": "B3", "description": "Water and sanitation services in Minas Gerais." },
+      { "ticker": "SAPR11", "name": "SANEPAR", "exchange": "B3", "description": "Water utility for the state of Paraná." }
+    ]
+  },
+  "africa": {
+    "south_africa": [
+      { "ticker": "AFT", "name": "Afrimat", "exchange": "JSE", "description": "Industrial minerals and materials group with water treatment interests." },
+      { "ticker": "SSW", "name": "Sibanye-Stillwater", "exchange": "JSE", "description": "Mining group with significant industrial water recycling and management projects." }
+    ]
+  }
+}

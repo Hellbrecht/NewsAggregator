@@ -1,0 +1,30 @@
+{
+  "name": "water-news-aggregator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Web app + worker for water risk news aggregation.",
+  "scripts": {
+    "dev": "concurrently -n web,worker -c cyan,magenta \"npm run dev:web\" \"npm run dev:worker\"",
+    "dev:web": "tsx watch apps/web/src/server.ts",
+    "dev:worker": "tsx watch apps/worker/src/index.ts",
+    "dev:pipeline": "tsx watch src/services/scheduler.ts",
+    "pipeline:once": "tsx src/services/scheduler.ts --once",
+    "pipeline:backfill": "tsx src/services/backfill_runner.ts",
+    "pipeline:start": "tsx src/services/scheduler.ts",
+    "sources:diagnose": "tsx src/services/source_diagnostics.ts",
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts",
+    "format": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "concurrently": "^9.0.1",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

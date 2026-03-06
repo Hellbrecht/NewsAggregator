@@ -1,0 +1,62 @@
+[
+  {
+    "id": "USGS_WATER_SERVICES",
+    "name": "USGS National Water Information System",
+    "url": "https://waterservices.usgs.gov",
+    "api": "https://waterservices.usgs.gov/nwis/iv/?format=json&sites=01646500&parameterCd=00060",
+    "topic": "river monitoring",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "NOAA_TIDES_CURRENTS",
+    "name": "NOAA Tides and Currents",
+    "url": "https://api.tidesandcurrents.noaa.gov",
+    "api": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8518750&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json",
+    "topic": "coastal flooding",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 30
+  },
+  {
+    "id": "GLOBAL_DROUGHT_INFO_SYSTEM",
+    "name": "US Drought Monitor Data",
+    "url": "https://droughtmonitor.unl.edu",
+    "api": "https://droughtmonitor.unl.edu/data/json/usdm_current.json",
+    "topic": "drought monitoring",
+    "region": "global",
+    "reliability_score": 9,
+    "intervalMinutes": 120
+  },
+  {
+    "id": "EUROPEAN_DROUGHT_OBSERVATORY",
+    "name": "European Drought Observatory",
+    "url": "https://edo.jrc.ec.europa.eu",
+    "api": "https://land.copernicus.eu/++api++/en/dataset-catalog?SearchableText=drought",
+    "topic": "drought monitoring",
+    "region": "europe",
+    "reliability_score": 9,
+    "intervalMinutes": 180
+  },
+  {
+    "id": "UNESCO_HYDROLOGY",
+    "name": "UNESCO Hydrology Data",
+    "url": "https://www.unesco.org/en/ihp",
+    "api": "https://ihp-wins.unesco.org/api/3/action/package_list",
+    "topic": "hydrology policy",
+    "region": "global",
+    "reliability_score": 8,
+    "intervalMinutes": 240
+  },
+  {
+    "id": "WORLD_BANK_AQUASTAT",
+    "name": "FAO AQUASTAT",
+    "url": "https://www.fao.org/aquastat",
+    "api": "https://www.fao.org/aquastat/en/page-data/databases/maindatabase/page-data.json",
+    "topic": "water resources",
+    "region": "global",
+    "reliability_score": 9,
+    "intervalMinutes": 360
+  }
+]

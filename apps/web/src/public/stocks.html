@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stocks | Water Risk News</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="top-nav-inner">
+        <a class="top-nav-brand" href="/">Water Risk Monitor</a>
+        <nav class="top-nav-links" aria-label="Primary navigation">
+          <a class="top-nav-link" href="/">News</a>
+          <a class="top-nav-link active" href="/stocks">Stocks</a>
+          <a class="top-nav-link" href="/hydrology">Hydrology Live</a>
+          <a class="top-nav-link" href="/alerts">Alerts</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="layout stocks-layout">
+      <main class="feed">
+        <header class="feed-header">
+          <h1>Water-Linked Stocks</h1>
+          <p>Track a custom watchlist with live quote refresh.</p>
+          <div class="stocks-controls">
+            <div class="stocks-controls-top">
+              <form id="stocks-form" class="stocks-form">
+                <div class="stocks-symbol-field">
+                  <label for="stock-symbol-input">Symbol</label>
+                  <div class="stocks-symbol-input-wrap">
+                    <input
+                      id="stock-symbol-input"
+                      name="symbol"
+                      type="text"
+                      placeholder="AAPL, RY.TO, SAP.DE, 9988.HK"
+                      maxlength="15"
+                      autocomplete="off"
+                    />
+                    <ul id="stock-symbol-suggestions" class="stock-suggestions hidden" role="listbox"></ul>
+                  </div>
+                </div>
+                <label for="stock-market-select">Market</label>
+                <select id="stock-market-select" name="market">
+                  <option value="US" selected>US</option>
+                  <option value="CA">Canada</option>
+                  <option value="EU">Europe</option>
+                  <option value="ASIA">Asia</option>
+                </select>
+                <button type="submit">Add</button>
+              </form>
+              <label class="stocks-search" for="stocks-search-input">
+                <span>Search</span>
+                <input id="stocks-search-input" type="search" placeholder="Filter by symbol or company..." />
+              </label>
+              <button id="refresh-stocks-btn" type="button">Refresh Quotes</button>
+            </div>
+            <div class="market-tabs" role="tablist" aria-label="Ticker market">
+              <button
+                class="market-tab active"
+                id="market-tab-all"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                data-market-tab="ALL"
+              >
+                All
+              </button>
+              <button
+                class="market-tab"
+                id="market-tab-us"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-market-tab="US"
+              >
+                US
+              </button>
+              <button
+                class="market-tab"
+                id="market-tab-ca"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-market-tab="CA"
+              >
+                Canada
+              </button>
+              <button
+                class="market-tab"
+                id="market-tab-eu"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-market-tab="EU"
+              >
+                Europe
+              </button>
+              <button
+                class="market-tab"
+                id="market-tab-asia"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-market-tab="ASIA"
+              >
+                Asia
+              </button>
+            </div>
+            <span id="stocks-status" class="scan-status"></span>
+          </div>
+        </header>
+
+        <section id="stocks-results" class="stocks-results" aria-live="polite">
+          <div class="stocks-table-wrap">
+            <table class="stocks-table">
+              <tbody>
+                <tr>
+                  <td colspan="8" class="stocks-empty">Loading quotes...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar">
+        <section class="watchlist-panel watchlist-menu">
+          <h2>Watchlist</h2>
+          <ul id="watchlist" class="watchlist"></ul>
+        </section>
+      </aside>
+    </div>
+
+    <script src="/stocks.js" defer></script>
+  </body>
+</html>

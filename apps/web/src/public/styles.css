@@ -1,0 +1,1186 @@
+:root {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --line: #d7dde8;
+  --ink: #18212f;
+  --muted: #5d687b;
+  --accent: #075985;
+  --hydrology-card-height: 48rem;
+  --sidebar-sticky-top: 16px;
+  --sidebar-gap: 16px;
+  --date-menu-height: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top left, #dce8f8, var(--bg) 35%);
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/mountain-lake-bg.png") center / cover no-repeat;
+  opacity: 0.25;
+  filter: blur(4px);
+  transform: scale(1.5);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.top-nav {
+  border-bottom: 1px solid var(--line);
+  background: #ffffffd9;
+  backdrop-filter: blur(4px);
+}
+
+.top-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.top-nav-brand {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.top-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-nav-link {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.top-nav-link:hover {
+  background: #f0f5ff;
+}
+
+.top-nav-link.active {
+  border-color: #2563eb;
+  background: #e8efff;
+}
+
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+}
+
+.layout.single-column {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sidebar {
+  display: grid;
+  gap: var(--sidebar-gap);
+  align-content: start;
+}
+
+.feed-header h1 {
+  margin: 0 0 8px;
+}
+
+.feed-header p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.feed-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.feed-actions button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.scan-status {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: block;
+  margin: 0 0 10px;
+}
+
+.scan-status.error {
+  color: #b42318;
+}
+
+.news-list {
+  display: grid;
+  gap: 14px;
+}
+
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.news-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.news-card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.news-card a:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+
+.tags span {
+  border: 1px solid #a7c8db;
+  background: #eaf5fb;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  text-transform: capitalize;
+}
+
+.relevance-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.relevance-btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #5a6578;
+}
+
+.relevance-btn:hover {
+  background: #f4f7fc;
+}
+
+.relevance-btn.active {
+  border-color: #6d778b;
+  background: #edf1f7;
+  color: #1f2937;
+}
+
+.relevance-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.relevance-icon.down {
+  transform: rotate(180deg);
+}
+
+.pagination {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pagination button,
+.date-menu button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.date-menu {
+  position: sticky;
+  top: var(--sidebar-sticky-top);
+  height: fit-content;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 14px;
+  z-index: 2;
+}
+
+.date-menu h2 {
+  margin-top: 0;
+}
+
+.date-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.date-menu button {
+  width: 100%;
+  text-align: left;
+}
+
+.date-month-group {
+  border-top: 1px solid #e8edf4;
+  padding-top: 8px;
+}
+
+.date-month-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  background: #f9fbff;
+}
+
+.date-month-toggle::after {
+  content: "\25be";
+  margin-left: 8px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.date-month-toggle[aria-expanded="false"]::after {
+  transform: rotate(-90deg);
+}
+
+.date-month-count {
+  color: var(--muted);
+  margin-left: auto;
+  margin-right: 8px;
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.date-submenu {
+  margin-top: 8px !important;
+  padding-left: 8px !important;
+  border-left: 2px solid #e4ebf8;
+}
+
+.date-submenu.collapsed {
+  display: none;
+}
+
+.date-menu button.selected {
+  border-color: #2563eb;
+  background: #e8efff;
+}
+
+.source-manager {
+  position: sticky;
+  top: calc(
+    var(--sidebar-sticky-top) + var(--date-menu-height) + var(--sidebar-gap)
+  );
+  align-self: start;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 14px;
+  z-index: 1;
+}
+
+.source-manager h2 {
+  margin: 0;
+}
+
+.source-manager-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 10px;
+}
+
+.source-manager-head button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.source-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  max-height: 280px;
+  overflow: auto;
+}
+
+.source-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  background: #fbfdff;
+}
+
+.source-name {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.source-meta,
+.source-link {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  word-break: break-all;
+}
+
+.source-link a {
+  color: var(--accent);
+}
+
+.source-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.source-actions button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.source-actions .danger {
+  border-color: #f0c3c3;
+  color: #a01515;
+}
+
+.source-empty {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--muted);
+}
+
+.source-form {
+  display: grid;
+  gap: 10px;
+}
+
+.source-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.88rem;
+}
+
+.source-form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.source-form button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 22px;
+  background: #fff;
+}
+
+.stocks-controls {
+  display: grid;
+  align-items: start;
+  gap: 10px;
+}
+
+.stocks-controls-top {
+  display: grid;
+  grid-template-columns: minmax(420px, auto) minmax(220px, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.market-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.market-tab {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.market-tab.active {
+  border-color: #2563eb;
+  background: #e8efff;
+}
+
+.stocks-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: end;
+}
+
+.stocks-form label {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.stocks-symbol-field {
+  display: grid;
+  gap: 6px;
+  min-width: 240px;
+}
+
+.stocks-symbol-input-wrap {
+  position: relative;
+}
+
+.stocks-form input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-width: 150px;
+  width: 240px;
+}
+
+.stocks-form select,
+.stocks-search input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.stocks-search {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  min-width: 0;
+}
+
+.stocks-search input {
+  min-width: 0;
+  width: 100%;
+}
+
+.stocks-form button,
+#refresh-stocks-btn,
+.watchlist-item button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.stocks-controls .scan-status {
+  margin: 0;
+}
+
+.stock-suggestions {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 6px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(24, 33, 47, 0.12);
+  max-height: 280px;
+  overflow: auto;
+  display: grid;
+  gap: 4px;
+}
+
+.stock-suggestions.hidden {
+  display: none;
+}
+
+.stock-suggestion-btn {
+  width: 100%;
+  border: 1px solid transparent;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.stock-suggestion-btn:hover,
+.stock-suggestion-btn.active {
+  border-color: #c9d9f6;
+  background: #f4f8ff;
+}
+
+.stock-suggestion-symbol {
+  display: block;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.stock-suggestion-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.stocks-layout .feed {
+  min-width: 0;
+}
+
+.watchlist-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 14px;
+  margin-bottom: 0;
+}
+
+.watchlist-panel h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.watchlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.watchlist-menu {
+  position: sticky;
+  top: var(--sidebar-sticky-top);
+  height: fit-content;
+  margin-top: var(--watchlist-offset, 0px);
+}
+
+.watchlist-menu .watchlist {
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.watchlist-menu .watchlist-item {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.watchlist-menu .watchlist-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.watchlist-menu .watchlist-empty {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.watchlist-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 8px 5px 10px;
+  background: #fbfdff;
+}
+
+.watchlist-item button {
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+.watchlist-empty {
+  color: var(--muted);
+}
+
+.stocks-results {
+  display: grid;
+  gap: 14px;
+}
+
+.stocks-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  overflow-x: auto;
+}
+
+.market-results-block {
+  overflow: hidden;
+}
+
+.market-results-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: #f8fbff;
+}
+
+.market-results-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.market-results-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.stocks-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.stocks-table th,
+.stocks-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+
+.stocks-table th {
+  background: #f4f8ff;
+  padding: 0;
+}
+
+.sort-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.sort-btn.active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.sparkline {
+  width: 120px;
+  height: 28px;
+  margin-top: 5px;
+  display: block;
+}
+
+.sparkline polyline {
+  fill: none;
+  stroke: #0f6fbf;
+  stroke-width: 2;
+}
+
+.sparkline .baseline {
+  stroke: #d4dbe7;
+  stroke-width: 1;
+}
+
+.stocks-symbol-link {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.stocks-symbol-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.stocks-subtle {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stocks-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 22px !important;
+}
+
+.stocks-table td.positive {
+  color: #087443;
+}
+
+.stocks-table td.negative {
+  color: #b42318;
+}
+
+.stocks-table td.neutral {
+  color: var(--muted);
+}
+
+.hydrology-page {
+  display: grid;
+  gap: 16px;
+}
+
+.hydrology-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.hydrology-actions button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.hydrology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.hydrology-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 14px;
+  min-width: 0;
+  height: var(--hydrology-card-height);
+  max-height: var(--hydrology-card-height);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hydrology-card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.hydrology-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.hydrology-card h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.hydrology-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.hydrology-chip {
+  display: inline-flex;
+  border: 1px solid #b7d4ef;
+  border-radius: 999px;
+  background: #eef7ff;
+  color: #0b5f93;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+}
+
+.hydrology-chip.ok {
+  border-color: #b6e3cf;
+  background: #e9f8f0;
+  color: #096b45;
+}
+
+.hydrology-chip.degraded {
+  border-color: #f5dbad;
+  background: #fff8ea;
+  color: #8f6200;
+}
+
+.hydrology-chip.error {
+  border-color: #f2c1c1;
+  background: #fff1f1;
+  color: #b42318;
+}
+
+.hydrology-provider-meta,
+.hydrology-provider-link {
+  margin-top: 6px !important;
+}
+
+.hydrology-provider-summary {
+  margin-top: 2px !important;
+  color: var(--ink) !important;
+}
+
+.hydrology-provider-notes {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  display: grid;
+  gap: 4px;
+}
+
+.hydrology-provider-link a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.hydrology-provider-link a:hover {
+  text-decoration: underline;
+}
+
+.hydrology-provider-error {
+  margin-top: 8px !important;
+  color: #b42318 !important;
+}
+
+.hydrology-table-wrap {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.hydrology-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.hydrology-table th,
+.hydrology-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.86rem;
+}
+
+.hydrology-table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  background: #f4f8ff;
+}
+
+.hydrology-subtle {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.hydrology-empty-row {
+  color: var(--muted);
+  text-align: center;
+}
+
+.alerts-page {
+  display: grid;
+  gap: 16px;
+}
+
+.alerts-controls {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 8px;
+}
+
+.alerts-controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.alerts-controls select,
+.alerts-controls input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.alerts-controls button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  height: 38px;
+}
+
+.alerts-feedback-note {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.alerts-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.alerts-summary-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 12px;
+}
+
+.alerts-summary-card h2 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+}
+
+.alerts-summary-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.alerts-list {
+  display: grid;
+  gap: 12px;
+}
+
+.alert-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 14px;
+}
+
+.alert-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.alert-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.04rem;
+}
+
+.alert-card h3 a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.alert-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.alert-card p {
+  margin: 0 0 10px;
+}
+
+.alert-level {
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1px solid #dbe4f3;
+  background: #f3f7ff;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  color: #1f456d;
+}
+
+.alert-level.critical {
+  border-color: #efb4b4;
+  background: #fff0f0;
+  color: #a71515;
+}
+
+.alert-level.high {
+  border-color: #f4d5a0;
+  background: #fff8e8;
+  color: #8a5d00;
+}
+
+.alert-level.elevated {
+  border-color: #b9d6f0;
+  background: #edf6ff;
+  color: #0b4f80;
+}
+
+.alert-level.watch {
+  border-color: #c7d6ec;
+  background: #f3f7fc;
+  color: #305070;
+}
+
+.alert-risk-score {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.alerts-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.alerts-pagination button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .top-nav-inner {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+
+  .stocks-controls-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .stocks-controls-top > * {
+    width: 100%;
+  }
+
+  .stocks-search input,
+  .stocks-form input,
+  .stocks-form select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .date-menu {
+    position: static;
+  }
+
+  .source-manager {
+    position: static;
+    top: auto;
+  }
+
+  .watchlist-menu {
+    position: static;
+    top: auto;
+    margin-top: 0;
+  }
+
+  .hydrology-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hydrology-card {
+    height: min(70vh, var(--hydrology-card-height));
+    max-height: min(70vh, var(--hydrology-card-height));
+  }
+
+  .alerts-controls {
+    grid-template-columns: 1fr;
+  }
+}
