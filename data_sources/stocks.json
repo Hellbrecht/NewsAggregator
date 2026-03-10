@@ -51,13 +51,13 @@
   },
   "europe": {
     "france": [
-      { "ticker": "VIE", "name": "Veolia Environnement", "exchange": "Euronext Paris", "description": "The world's largest water and environmental services provider." },
+      { "ticker": "VIE", "name": "Veolia Environnement", "exchange": "Euronext Paris", "aliases": { "yahoo": "VIE.PA" }, "description": "The world's largest water and environmental services provider." },
       { "ticker": "SEV", "name": "Suez (Historical/Veolia)", "exchange": "Euronext Paris", "description": "Major player in water and waste management (merged with/acquired by Veolia/Consortium)." }
     ],
     "united_kingdom": [
-      { "ticker": "SVT", "name": "Severn Trent", "exchange": "LSE", "description": "Regulated water and wastewater utility serving the UK Midlands." },
-      { "ticker": "UU.", "name": "United Utilities Group", "exchange": "LSE", "description": "Operates the water and wastewater network in North West England." },
-      { "ticker": "PNN", "name": "Pennon Group", "exchange": "LSE", "description": "Parent company of South West Water and Bristol Water." }
+      { "ticker": "SVT", "name": "Severn Trent", "exchange": "LSE", "aliases": { "yahoo": "SVT.L" }, "description": "Regulated water and wastewater utility serving the UK Midlands." },
+      { "ticker": "UU.", "name": "United Utilities Group", "exchange": "LSE", "aliases": { "yahoo": "UU.L" }, "description": "Operates the water and wastewater network in North West England." },
+      { "ticker": "PNN", "name": "Pennon Group", "exchange": "LSE", "aliases": { "yahoo": "PNN.L" }, "description": "Parent company of South West Water and Bristol Water." }
     ],
     "germany": [
       { "ticker": "KSB", "name": "KSB SE & Co. KGaA", "exchange": "Xetra", "description": "Manufacturer of pumps and valves used in water transport and treatment." }
@@ -68,17 +68,17 @@
   },
   "asia": {
     "japan": [
-      { "ticker": "6370", "name": "Kurita Water Industries", "exchange": "TSE", "description": "Global leader in water treatment chemicals and facilities." },
-      { "ticker": "6367", "name": "Daikin Industries", "exchange": "TSE", "description": "Involved in water heating and filtration systems." }
+      { "ticker": "6370", "name": "Kurita Water Industries", "exchange": "TSE", "aliases": { "yahoo": "6370.T" }, "description": "Global leader in water treatment chemicals and facilities." },
+      { "ticker": "6367", "name": "Daikin Industries", "exchange": "TSE", "aliases": { "yahoo": "6367.T" }, "description": "Involved in water heating and filtration systems." }
     ],
     "china_hong_kong": [
-      { "ticker": "0371", "name": "Beijing Enterprises Water Group", "exchange": "HKEX", "description": "Major Chinese water and environmental service provider." },
-      { "ticker": "0855", "name": "China Water Affairs Group", "exchange": "HKEX", "description": "Urban water supply and pipeline construction in China." },
-      { "ticker": "0270", "name": "Guangdong Investment", "exchange": "HKEX", "description": "Operates the Dongshen Water Supply Project to Hong Kong." },
-      { "ticker": "1857", "name": "China Everbright Water", "exchange": "HKEX/SGX", "description": "Specializes in wastewater treatment and sponge city construction." }
+      { "ticker": "0371", "name": "Beijing Enterprises Water Group", "exchange": "HKEX", "aliases": { "yahoo": "0371.HK" }, "description": "Major Chinese water and environmental service provider." },
+      { "ticker": "0855", "name": "China Water Affairs Group", "exchange": "HKEX", "aliases": { "yahoo": "0855.HK" }, "description": "Urban water supply and pipeline construction in China." },
+      { "ticker": "0270", "name": "Guangdong Investment", "exchange": "HKEX", "aliases": { "yahoo": "0270.HK" }, "description": "Operates the Dongshen Water Supply Project to Hong Kong." },
+      { "ticker": "1857", "name": "China Everbright Water", "exchange": "HKEX/SGX", "aliases": { "yahoo": "1857.HK" }, "description": "Specializes in wastewater treatment and sponge city construction." }
     ],
     "singapore": [
-      { "ticker": "BHK", "name": "SIIC Environment Holdings", "exchange": "SGX/HKEX", "description": "Wastewater treatment and water supply operations in China." }
+      { "ticker": "BHK", "name": "SIIC Environment Holdings", "exchange": "SGX/HKEX", "aliases": { "yahoo": "BHK.SI" }, "description": "Wastewater treatment and water supply operations in China." }
     ]
   },
   "oceania": {

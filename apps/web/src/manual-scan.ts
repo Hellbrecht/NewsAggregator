@@ -1,6 +1,6 @@
 import { MonitoredSite } from "../../../packages/shared/src";
 import { mergeAndSaveEntries } from "../../worker/src/news-store";
-import { extractRiskEntries } from "../../worker/src/site-parser";
+import { extractRiskEntries, extractRiskEntriesFromFeed } from "../../worker/src/site-parser";
 
 const REQUEST_TIMEOUT_MS = 20_000;
 const USER_AGENT = "WaterNewsAggregator/0.1";
@@ -48,14 +48,17 @@ export async function scanSourcesNow(sites: MonitoredSite[]): Promise<ScanNowRes
 
 async function scanSingleSite(site: MonitoredSite): Promise<SiteScanResult> {
   try {
-    const html = await fetchHtml(site.url);
-    const entries = extractRiskEntries(html, site.name, site.url);
+    const endpoint = site.rss ?? site.url;
+    const payload = await fetchText(endpoint);
+    const entries = site.rss
+      ? extractRiskEntriesFromFeed(payload, site.name, endpoint)
+      : extractRiskEntries(payload, site.name, site.url);
     const inserted = await mergeAndSaveEntries(entries);
 
     return {
       sourceId: site.id,
       sourceName: site.name,
-      sourceUrl: site.url,
+      sourceUrl: endpoint,
       found: entries.length,
       inserted
     };
@@ -64,7 +67,7 @@ async function scanSingleSite(site: MonitoredSite): Promise<SiteScanResult> {
     return {
       sourceId: site.id,
       sourceName: site.name,
-      sourceUrl: site.url,
+      sourceUrl: site.rss ?? site.url,
       found: 0,
       inserted: 0,
       error: message
@@ -72,7 +75,7 @@ async function scanSingleSite(site: MonitoredSite): Promise<SiteScanResult> {
   }
 }
 
-async function fetchHtml(url: string): Promise<string> {
+async function fetchText(url: string): Promise<string> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 

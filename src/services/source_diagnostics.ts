@@ -1,10 +1,11 @@
 import { fetchApiDataset } from "../ingestion/api_ingestor";
+import { fetchHtmlHeadlines } from "../ingestion/html_ingestor";
 import { fetchRSS, getHttpStatusFromError } from "../ingestion/rss_ingestor";
 import { fetchSatelliteDataset } from "../ingestion/satellite_ingestor";
 import { CategorizedSource } from "../models/Source";
 import { loadSourcesWithReport } from "./source_loader";
 
-type DiagnoseMode = "rss" | "api" | "satellite";
+type DiagnoseMode = "rss" | "html" | "api" | "satellite";
 
 interface SourceDiagnosis {
   id: string;
@@ -66,6 +67,8 @@ async function diagnoseSource(source: CategorizedSource): Promise<SourceDiagnosi
     let count = 0;
     if (mode === "rss") {
       count = (await fetchRSS(source, { maxAttempts: 1 })).length;
+    } else if (mode === "html") {
+      count = (await fetchHtmlHeadlines(source)).length;
     } else if (mode === "satellite") {
       count = (await fetchSatelliteDataset(source)).length;
     } else {
@@ -105,6 +108,10 @@ async function diagnoseSource(source: CategorizedSource): Promise<SourceDiagnosi
 function resolveMode(source: CategorizedSource): DiagnoseMode {
   if (source.rss) {
     return "rss";
+  }
+
+  if (source.category === "news") {
+    return "html";
   }
 
   if (source.category === "satellite") {

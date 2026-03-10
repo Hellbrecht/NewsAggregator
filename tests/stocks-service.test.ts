@@ -71,9 +71,89 @@ test("getStockQuotes falls back to Yahoo when Stooq is unavailable", async () =>
     const [quote] = await getStockQuotes(["AWK"]);
     assert.equal(quote.status, "ok");
     assert.equal(quote.sourceSymbol, "AWK");
+    assert.equal(quote.quotePageSymbol, "AWK");
     assert.equal(quote.name, "American Water Works Company, Inc.");
     assert.equal(quote.date, "2026-03-05");
     assert.equal(quote.close, 134.63);
+    assert.equal(quote.history.length, 2);
+  } finally {
+    globalThis.fetch = originalFetch;
+
+    if (previousProvider === undefined) {
+      delete process.env.STOCKS_PROVIDER;
+    } else {
+      process.env.STOCKS_PROVIDER = previousProvider;
+    }
+
+    if (previousMassiveApiKey === undefined) {
+      delete process.env.MASSIVE_API_KEY;
+    } else {
+      process.env.MASSIVE_API_KEY = previousMassiveApiKey;
+    }
+  }
+});
+
+test("getStockQuotes uses configured Yahoo aliases for non-US symbols", async () => {
+  const previousProvider = process.env.STOCKS_PROVIDER;
+  const previousMassiveApiKey = process.env.MASSIVE_API_KEY;
+  const originalFetch = globalThis.fetch;
+
+  process.env.STOCKS_PROVIDER = "stooq";
+  delete process.env.MASSIVE_API_KEY;
+
+  globalThis.fetch = async (input) => {
+    const url = String(input);
+    if (url.startsWith("https://stooq.com/")) {
+      return new Response("No data", {
+        status: 200,
+        headers: { "content-type": "text/plain" }
+      });
+    }
+
+    if (url.startsWith("https://query1.finance.yahoo.com/v8/finance/chart/VIE.PA")) {
+      return new Response(
+        JSON.stringify({
+          chart: {
+            result: [
+              {
+                meta: {
+                  longName: "Veolia Environnement SA",
+                  chartPreviousClose: 29.8
+                },
+                timestamp: [1772634600, 1772744402],
+                indicators: {
+                  quote: [
+                    {
+                      open: [29.81, 30.02],
+                      high: [30.15, 30.3],
+                      low: [29.74, 29.95],
+                      close: [29.96, 30.21],
+                      volume: [1123400, 987654]
+                    }
+                  ]
+                }
+              }
+            ],
+            error: null
+          }
+        }),
+        {
+          status: 200,
+          headers: { "content-type": "application/json" }
+        }
+      );
+    }
+
+    throw new Error(`Unexpected URL requested in test: ${url}`);
+  };
+
+  try {
+    const [quote] = await getStockQuotes(["VIE"]);
+    assert.equal(quote.status, "ok");
+    assert.equal(quote.sourceSymbol, "VIE.PA");
+    assert.equal(quote.quotePageSymbol, "VIE.PA");
+    assert.equal(quote.name, "Veolia Environnement SA");
+    assert.equal(quote.close, 30.21);
     assert.equal(quote.history.length, 2);
   } finally {
     globalThis.fetch = originalFetch;

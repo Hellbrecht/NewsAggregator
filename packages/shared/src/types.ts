@@ -20,6 +20,7 @@ export interface MonitoredSite {
   id: string;
   name: string;
   url: string;
+  rss?: string;
   intervalMinutes: number;
 }
 

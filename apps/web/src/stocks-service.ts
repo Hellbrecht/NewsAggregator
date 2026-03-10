@@ -1,5 +1,7 @@
 import { URL } from "node:url";
 
+import { ConfiguredStockEntry, loadConfiguredStockWatchlist } from "./stocks-watchlist";
+
 const STOOQ_QUOTE_ENDPOINT = "https://stooq.com/q/l/";
 const STOOQ_HISTORY_ENDPOINT = "https://stooq.com/q/d/l/";
 const MASSIVE_API_BASE = "https://api.polygon.io";
@@ -20,6 +22,7 @@ const DEFAULT_PROVIDER = "stooq";
 export type StockQuote = {
   symbol: string;
   sourceSymbol: string;
+  quotePageSymbol: string | null;
   name: string | null;
   date: string | null;
   time: string | null;
@@ -45,6 +48,8 @@ type HistoryCacheEntry = {
   fetchedAt: number;
   expiresAt: number;
 };
+
+type ConfiguredStockLookup = Map<string, ConfiguredStockEntry>;
 
 const quoteCache = new Map<string, QuoteCacheEntry>();
 const historyCache = new Map<string, HistoryCacheEntry>();
@@ -77,7 +82,11 @@ export function parseRequestedSymbols(value: string | null): string[] {
 
 export async function getStockQuotes(symbols: string[]): Promise<StockQuote[]> {
   const symbolsNeedingRefresh = symbols.filter((symbol) => !readFreshQuoteCache(symbol));
-  const massiveSnapshotByTicker = await fetchMassiveSnapshotQuotes(symbolsNeedingRefresh);
+  const configuredStocksBySymbol = await loadConfiguredStocksBySymbol();
+  const massiveSnapshotByTicker = await fetchMassiveSnapshotQuotes(
+    symbolsNeedingRefresh,
+    configuredStocksBySymbol
+  );
   return mapWithConcurrency(symbols, FETCH_CONCURRENCY, async (symbol) => {
     const cached = readFreshQuoteCache(symbol);
     if (cached) {
@@ -85,9 +94,10 @@ export async function getStockQuotes(symbols: string[]): Promise<StockQuote[]> {
     }
 
     const stale = readStaleQuoteCache(symbol);
+    const configuredStock = configuredStocksBySymbol.get(symbol.toUpperCase()) ?? null;
 
     try {
-      const quote = await fetchSymbolData(symbol, massiveSnapshotByTicker);
+      const quote = await fetchSymbolData(symbol, massiveSnapshotByTicker, configuredStock);
       if (quote.status === "ok") {
         writeQuoteCache(symbol, quote);
         return quote;
@@ -95,7 +105,7 @@ export async function getStockQuotes(symbols: string[]): Promise<StockQuote[]> {
 
       return stale ?? quote;
     } catch {
-      return stale ?? createUnavailableQuote(symbol, symbol);
+      return stale ?? enrichQuote(createUnavailableQuote(symbol, symbol), symbol, configuredStock);
     }
   });
 }
@@ -128,27 +138,28 @@ function toUsFallbackSymbol(symbol: string): string {
 
 async function fetchSymbolData(
   symbol: string,
-  massiveSnapshotByTicker: Map<string, StockQuote>
+  massiveSnapshotByTicker: Map<string, StockQuote>,
+  configuredStock: ConfiguredStockEntry | null
 ): Promise<StockQuote> {
-  const massiveQuote = readMassiveSnapshotQuoteForSymbol(symbol, massiveSnapshotByTicker);
+  const massiveQuote = readMassiveSnapshotQuoteForSymbol(symbol, massiveSnapshotByTicker, configuredStock);
   if (massiveQuote) {
-    return massiveQuote;
+    return enrichQuote(massiveQuote, symbol, configuredStock);
   }
 
-  const stooqQuote = await fetchStooqSymbolData(symbol);
+  const stooqQuote = await fetchStooqSymbolData(symbol, configuredStock);
   if (stooqQuote.status === "ok") {
-    return stooqQuote;
+    return enrichQuote(stooqQuote, symbol, configuredStock);
   }
 
-  const yahooQuote = await fetchYahooQuote(symbol);
+  const yahooQuote = await fetchYahooQuote(symbol, configuredStock);
   if (yahooQuote.status === "ok") {
-    return yahooQuote;
+    return enrichQuote(yahooQuote, symbol, configuredStock);
   }
 
-  return stooqQuote;
+  return enrichQuote(stooqQuote, symbol, configuredStock);
 }
 
-function shouldUseMassiveProvider(symbol: string): boolean {
+function shouldUseMassiveProvider(symbol: string, configuredStock: ConfiguredStockEntry | null): boolean {
   const apiKey = getMassiveApiKey();
   if (!apiKey) {
     return false;
@@ -158,12 +169,20 @@ function shouldUseMassiveProvider(symbol: string): boolean {
     return false;
   }
 
-  return getMassiveTickerCandidates(symbol).length > 0;
+  return getMassiveTickerCandidates(symbol, configuredStock).length > 0;
 }
 
-function getMassiveTickerCandidates(symbol: string): string[] {
+function getMassiveTickerCandidates(
+  symbol: string,
+  configuredStock: ConfiguredStockEntry | null
+): string[] {
   const normalized = symbol.trim().toUpperCase();
   const candidates: string[] = [];
+  const configuredTicker = configuredStock?.aliases.massive;
+
+  if (configuredTicker) {
+    candidates.push(configuredTicker);
+  }
 
   if (/^[A-Z0-9]{1,15}$/.test(normalized)) {
     candidates.push(normalized);
@@ -176,29 +195,31 @@ function getMassiveTickerCandidates(symbol: string): string[] {
     }
   }
 
-  return candidates;
+  return dedupeCandidates(candidates);
 }
 
-async function fetchStooqSymbolData(symbol: string): Promise<StockQuote> {
-  const primarySourceSymbol = toStooqSymbol(symbol);
+async function fetchStooqSymbolData(
+  symbol: string,
+  configuredStock: ConfiguredStockEntry | null
+): Promise<StockQuote> {
+  const candidates = getStooqTickerCandidates(symbol, configuredStock);
+  const primarySourceSymbol = candidates[0] ?? toStooqSymbol(symbol);
   if (isStooqRateLimited()) {
     return createUnavailableQuote(symbol, primarySourceSymbol);
   }
 
-  let quote = await fetchStooqQuoteFromSource(symbol, primarySourceSymbol);
+  let quote = createUnavailableQuote(symbol, primarySourceSymbol);
   let historySourceSymbol = primarySourceSymbol;
 
-  if (quote.status === "unavailable" && isCanadianSymbol(symbol)) {
-    const fallbackSourceSymbol = toUsFallbackSymbol(symbol);
-    const fallbackQuote = await fetchStooqQuoteFromSource(symbol, fallbackSourceSymbol);
-    if (fallbackQuote.status === "ok") {
-      quote = fallbackQuote;
-      historySourceSymbol = fallbackSourceSymbol;
+  for (const candidate of candidates) {
+    const candidateQuote = await fetchStooqQuoteFromSource(symbol, candidate);
+    if (candidateQuote.status !== "ok") {
+      continue;
     }
-  }
 
-  if (quote.status === "ok") {
-    historySourceSymbol = quote.sourceSymbol.toLowerCase();
+    quote = candidateQuote;
+    historySourceSymbol = candidateQuote.sourceSymbol.toLowerCase();
+    break;
   }
 
   const historyCacheKey = `stooq:${historySourceSymbol}`;
@@ -293,7 +314,10 @@ async function fetchStooqHistory(sourceSymbol: string, cacheKey: string): Promis
   return history;
 }
 
-async function fetchMassiveSnapshotQuotes(symbols: string[]): Promise<Map<string, StockQuote>> {
+async function fetchMassiveSnapshotQuotes(
+  symbols: string[],
+  configuredStocksBySymbol: ConfiguredStockLookup
+): Promise<Map<string, StockQuote>> {
   const quotesByTicker = new Map<string, StockQuote>();
   if (!symbols.length || isMassiveRateLimited()) {
     return quotesByTicker;
@@ -306,7 +330,11 @@ async function fetchMassiveSnapshotQuotes(symbols: string[]): Promise<Map<string
 
   const tickers = Array.from(
     new Set(
-      symbols.flatMap((symbol) => getMassiveTickerCandidates(symbol)).filter((ticker) => Boolean(ticker))
+      symbols
+        .flatMap((symbol) =>
+          getMassiveTickerCandidates(symbol, configuredStocksBySymbol.get(symbol.toUpperCase()) ?? null)
+        )
+        .filter((ticker) => Boolean(ticker))
     )
   );
   if (!tickers.length) {
@@ -339,13 +367,14 @@ async function fetchMassiveSnapshotQuotes(symbols: string[]): Promise<Map<string
 
 function readMassiveSnapshotQuoteForSymbol(
   symbol: string,
-  massiveSnapshotByTicker: Map<string, StockQuote>
+  massiveSnapshotByTicker: Map<string, StockQuote>,
+  configuredStock: ConfiguredStockEntry | null
 ): StockQuote | null {
-  if (!shouldUseMassiveProvider(symbol)) {
+  if (!shouldUseMassiveProvider(symbol, configuredStock)) {
     return null;
   }
 
-  const candidates = getMassiveTickerCandidates(symbol);
+  const candidates = getMassiveTickerCandidates(symbol, configuredStock);
   for (const candidate of candidates) {
     const quote = massiveSnapshotByTicker.get(candidate.toUpperCase());
     if (!quote || quote.status !== "ok") {
@@ -362,8 +391,11 @@ function readMassiveSnapshotQuoteForSymbol(
   return null;
 }
 
-async function fetchYahooQuote(symbol: string): Promise<StockQuote> {
-  const candidates = getYahooTickerCandidates(symbol);
+async function fetchYahooQuote(
+  symbol: string,
+  configuredStock: ConfiguredStockEntry | null
+): Promise<StockQuote> {
+  const candidates = getYahooTickerCandidates(symbol, configuredStock);
   if (!candidates.length) {
     return createUnavailableQuote(symbol, symbol);
   }
@@ -378,9 +410,17 @@ async function fetchYahooQuote(symbol: string): Promise<StockQuote> {
   return createUnavailableQuote(symbol, candidates[0]);
 }
 
-function getYahooTickerCandidates(symbol: string): string[] {
+function getYahooTickerCandidates(
+  symbol: string,
+  configuredStock: ConfiguredStockEntry | null
+): string[] {
   const normalized = symbol.trim().toUpperCase();
   const candidates: string[] = [];
+  const configuredTicker = configuredStock?.aliases.yahoo;
+  if (configuredTicker) {
+    candidates.push(configuredTicker);
+  }
+
   if (normalized) {
     candidates.push(normalized);
   }
@@ -392,7 +432,7 @@ function getYahooTickerCandidates(symbol: string): string[] {
     }
   }
 
-  return candidates;
+  return dedupeCandidates(candidates);
 }
 
 async function fetchYahooChartQuote(symbol: string, yahooSymbol: string): Promise<StockQuote> {
@@ -584,6 +624,7 @@ function parseYahooChartToQuote(
   return {
     symbol,
     sourceSymbol: yahooSymbol.toUpperCase(),
+    quotePageSymbol: null,
     name,
     date: timestampMs !== null ? formatIsoDateTimePart(timestampMs, "date") : null,
     time: timestampMs !== null ? formatIsoDateTimePart(timestampMs, "time") : null,
@@ -695,6 +736,7 @@ function parseQuoteLine(symbol: string, sourceSymbol: string, content: string): 
   return {
     symbol,
     sourceSymbol: (rawSymbol || sourceSymbol).toUpperCase(),
+    quotePageSymbol: null,
     name: isNotAvailable(nameRaw) ? null : nameRaw,
     date: isNotAvailable(rawDate) ? null : rawDate,
     time: isNotAvailable(rawTime) ? null : rawTime,
@@ -714,6 +756,7 @@ function createUnavailableQuote(symbol: string, sourceSymbol: string): StockQuot
   return {
     symbol,
     sourceSymbol: sourceSymbol.toUpperCase(),
+    quotePageSymbol: null,
     name: null,
     date: null,
     time: null,
@@ -795,6 +838,7 @@ function parseMassiveGroupedQuote(row: unknown, marketDate: string): StockQuote 
   return {
     symbol: ticker,
     sourceSymbol: ticker,
+    quotePageSymbol: null,
     name: null,
     date: marketDate,
     time: null,
@@ -844,6 +888,77 @@ function toNumberOrNullLoose(value: unknown): number | null {
   }
 
   return null;
+}
+
+async function loadConfiguredStocksBySymbol(): Promise<ConfiguredStockLookup> {
+  try {
+    const entries = await loadConfiguredStockWatchlist();
+    const map: ConfiguredStockLookup = new Map();
+    entries.forEach((entry) => {
+      const key = entry.symbol.toUpperCase();
+      if (!map.has(key)) {
+        map.set(key, entry);
+      }
+    });
+    return map;
+  } catch {
+    return new Map();
+  }
+}
+
+function getStooqTickerCandidates(
+  symbol: string,
+  configuredStock: ConfiguredStockEntry | null
+): string[] {
+  const normalized = symbol.trim().toUpperCase();
+  const candidates: string[] = [];
+  const configuredTicker = configuredStock?.aliases.stooq;
+
+  if (configuredTicker) {
+    candidates.push(configuredTicker);
+  }
+
+  candidates.push(toStooqSymbol(normalized));
+
+  if (isCanadianSymbol(normalized)) {
+    candidates.push(toUsFallbackSymbol(normalized));
+  }
+
+  return dedupeCandidates(candidates);
+}
+
+function getQuotePageSymbol(symbol: string, configuredStock: ConfiguredStockEntry | null): string {
+  const yahooCandidates = getYahooTickerCandidates(symbol, configuredStock);
+  return yahooCandidates[0] ?? symbol.trim().toUpperCase();
+}
+
+function enrichQuote(
+  quote: StockQuote,
+  symbol: string,
+  configuredStock: ConfiguredStockEntry | null
+): StockQuote {
+  return {
+    ...quote,
+    name: quote.name ?? configuredStock?.name ?? null,
+    quotePageSymbol: quote.quotePageSymbol ?? getQuotePageSymbol(symbol, configuredStock)
+  };
+}
+
+function dedupeCandidates(candidates: string[]): string[] {
+  const seen = new Set<string>();
+  const unique: string[] = [];
+
+  candidates.forEach((candidate) => {
+    const normalized = candidate.trim().toUpperCase();
+    if (!normalized || seen.has(normalized)) {
+      return;
+    }
+
+    seen.add(normalized);
+    unique.push(normalized);
+  });
+
+  return unique;
 }
 
 

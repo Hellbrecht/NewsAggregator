@@ -9,12 +9,20 @@ export type ConfiguredStockEntry = {
   market: string;
   name: string | null;
   exchange: string | null;
+  aliases: StockSymbolAliases;
+};
+
+export type StockSymbolAliases = {
+  yahoo: string | null;
+  stooq: string | null;
+  massive: string | null;
 };
 
 type RawTickerEntry = {
   ticker: string;
   name: string | null;
   exchange: string | null;
+  aliases: StockSymbolAliases;
   ancestry: string[];
 };
 
@@ -45,7 +53,8 @@ export function parseStockCatalog(catalog: unknown): ConfiguredStockEntry[] {
       symbol,
       market,
       name: entry.name,
-      exchange: entry.exchange
+      exchange: entry.exchange,
+      aliases: entry.aliases
     });
   });
 
@@ -70,6 +79,7 @@ function collectTickers(node: unknown, ancestry: string[], output: RawTickerEntr
       ticker: tickerValue,
       name: typeof node.name === "string" ? node.name.trim() || null : null,
       exchange: typeof node.exchange === "string" ? node.exchange.trim() || null : null,
+      aliases: readAliases(node.aliases),
       ancestry
     });
     return;
@@ -129,6 +139,39 @@ function normalizeSymbol(value: string): string | null {
   }
 
   return normalized;
+}
+
+function readAliases(value: unknown): StockSymbolAliases {
+  if (!isRecord(value)) {
+    return createEmptyAliases();
+  }
+
+  return {
+    yahoo: normalizeAlias(value.yahoo),
+    stooq: normalizeAlias(value.stooq),
+    massive: normalizeAlias(value.massive)
+  };
+}
+
+function normalizeAlias(value: unknown): string | null {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const normalized = value.trim().toUpperCase();
+  if (!normalized || !SYMBOL_PATTERN.test(normalized)) {
+    return null;
+  }
+
+  return normalized;
+}
+
+function createEmptyAliases(): StockSymbolAliases {
+  return {
+    yahoo: null,
+    stooq: null,
+    massive: null
+  };
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

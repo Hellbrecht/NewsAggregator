@@ -1,6 +1,7 @@
+import { MonitoredSite } from "../../../packages/shared/src";
 import { loadSites } from "./site-config";
 import { mergeAndSaveEntries } from "./news-store";
-import { extractRiskEntries } from "./site-parser";
+import { extractRiskEntries, extractRiskEntriesFromFeed } from "./site-parser";
 
 const REQUEST_TIMEOUT_MS = 20_000;
 const USER_AGENT = "WaterNewsAggregator/0.1";
@@ -16,29 +17,32 @@ async function main(): Promise<void> {
   for (const site of sites) {
     const intervalMs = site.intervalMinutes * 60_000;
 
-    await scanSite(site.name, site.url);
+    await scanSite(site);
     setInterval(() => {
-      void scanSite(site.name, site.url);
+      void scanSite(site);
     }, intervalMs);
   }
 
   console.log(`Worker active for ${sites.length} source(s).`);
 }
 
-async function scanSite(siteName: string, siteUrl: string): Promise<void> {
+async function scanSite(site: MonitoredSite): Promise<void> {
   try {
-    const html = await fetchHtml(siteUrl);
-    const entries = extractRiskEntries(html, siteName, siteUrl);
+    const endpoint = site.rss ?? site.url;
+    const payload = await fetchText(endpoint);
+    const entries = site.rss
+      ? extractRiskEntriesFromFeed(payload, site.name, endpoint)
+      : extractRiskEntries(payload, site.name, site.url);
     const inserted = await mergeAndSaveEntries(entries);
     console.log(
-      `[${new Date().toISOString()}] ${siteName}: found=${entries.length} inserted=${inserted}`
+      `[${new Date().toISOString()}] ${site.name}: found=${entries.length} inserted=${inserted}`
     );
   } catch (error) {
-    console.error(`[${new Date().toISOString()}] ${siteName} scan failed`, error);
+    console.error(`[${new Date().toISOString()}] ${site.name} scan failed`, error);
   }
 }
 
-async function fetchHtml(url: string): Promise<string> {
+async function fetchText(url: string): Promise<string> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 

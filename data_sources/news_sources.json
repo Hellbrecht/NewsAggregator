@@ -938,5 +938,538 @@
     "region": "europe",
     "reliability_score": 8,
     "intervalMinutes": 60
+  },
+  {
+    "id": "cbc-news-top",
+    "name": "CBC News - Top Stories",
+    "url": "https://www.cbc.ca/news",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ctv-news-top",
+    "name": "CTV News - Top Stories",
+    "url": "https://www.ctvnews.ca/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "toronto-star-top",
+    "name": "Toronto Star - Top Stories",
+    "url": "https://www.thestar.com/",
+    "rss": "https://www.thestar.com/search/?f=rss&t=article&bl=2827101&l=20",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "cp24-top",
+    "name": "CP24 - Top Stories",
+    "url": "https://www.cp24.com/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "lapresse-actualites",
+    "name": "La Presse - Actualites",
+    "url": "https://www.lapresse.ca/actualites/",
+    "rss": "https://www.lapresse.ca/actualites/rss",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "lapresse-affaires",
+    "name": "La Presse - Affaires",
+    "url": "https://www.lapresse.ca/affaires/",
+    "rss": "https://www.lapresse.ca/affaires/rss",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ledevoir-actualites",
+    "name": "Le Devoir - Actualites",
+    "url": "https://www.ledevoir.com/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "noovo-info-top",
+    "name": "Noovo Info - Actualites",
+    "url": "https://www.noovo.info/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 7,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "apnews-top",
+    "name": "AP News - Top Stories",
+    "url": "https://apnews.com/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "abc-top-stories",
+    "name": "ABC News - Top Stories",
+    "url": "https://abcnews.go.com/",
+    "rss": "https://abcnews.go.com/abcnews/topstories",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "cbs-top-stories",
+    "name": "CBS News - Top Stories",
+    "url": "https://www.cbsnews.com/",
+    "rss": "https://www.cbsnews.com/latest/rss/main",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "nbc-top-stories",
+    "name": "NBC News - Top Stories",
+    "url": "https://www.nbcnews.com/",
+    "rss": "https://feeds.nbcnews.com/nbcnews/public/news",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "foxnews-latest",
+    "name": "Fox News - Latest",
+    "url": "https://www.foxnews.com/",
+    "rss": "https://moxie.foxnews.com/google-publisher/latest.xml",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "usatoday-top",
+    "name": "USA Today - Top Stories",
+    "url": "https://www.usatoday.com/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "latimes-world-nation",
+    "name": "Los Angeles Times - World & Nation",
+    "url": "https://www.latimes.com/world-nation",
+    "rss": "https://www.latimes.com/world-nation/rss2.0.xml",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "cbc-news-canada",
+    "name": "CBC News - Canada",
+    "url": "https://www.cbc.ca/news/canada",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "cbc-news-business",
+    "name": "CBC News - Business",
+    "url": "https://www.cbc.ca/news/business",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "cbc-news-health",
+    "name": "CBC News - Health",
+    "url": "https://www.cbc.ca/news/health",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "cbc-news-science",
+    "name": "CBC News - Science",
+    "url": "https://www.cbc.ca/news/science",
+    "topic": "environment",
+    "region": "canada",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ctv-news-canada",
+    "name": "CTV News - Canada",
+    "url": "https://www.ctvnews.ca/canada/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ctv-news-world",
+    "name": "CTV News - World",
+    "url": "https://www.ctvnews.ca/world/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ctv-news-business",
+    "name": "CTV News - Business",
+    "url": "https://www.ctvnews.ca/business/",
+    "topic": "business",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ctv-news-health",
+    "name": "CTV News - Health",
+    "url": "https://www.ctvnews.ca/health/",
+    "topic": "health",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "ctv-news-climate",
+    "name": "CTV News - Climate & Environment",
+    "url": "https://www.ctvnews.ca/climate-and-environment/",
+    "topic": "environment",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "lapresse-international",
+    "name": "La Presse - International",
+    "url": "https://www.lapresse.ca/international/",
+    "rss": "https://www.lapresse.ca/international/rss",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "journal-quebec-actualite",
+    "name": "Journal de Quebec - Actualite",
+    "url": "https://www.journaldequebec.com/actualite",
+    "rss": "https://www.journaldequebec.com/actualite/rss.xml",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 7,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "citynews-toronto",
+    "name": "CityNews Toronto",
+    "url": "https://toronto.citynews.ca/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "citynews-vancouver",
+    "name": "CityNews Vancouver",
+    "url": "https://vancouver.citynews.ca/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "vancouver-sun-top",
+    "name": "Vancouver Sun - Top Stories",
+    "url": "https://vancouversun.com/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "ottawa-citizen-top",
+    "name": "Ottawa Citizen - Top Stories",
+    "url": "https://ottawacitizen.com/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "toronto-sun-top",
+    "name": "Toronto Sun - Top Stories",
+    "url": "https://torontosun.com/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 7,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "apnews-us-news",
+    "name": "AP News - U.S. News",
+    "url": "https://apnews.com/us-news",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "apnews-climate",
+    "name": "AP News - Climate & Environment",
+    "url": "https://apnews.com/climate-and-environment",
+    "topic": "environment",
+    "region": "usa",
+    "reliability_score": 10,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "thehill-top",
+    "name": "The Hill - News",
+    "url": "https://thehill.com/",
+    "rss": "https://thehill.com/feed/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "axios-top",
+    "name": "Axios - Top Stories",
+    "url": "https://www.axios.com/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "bloomberg-top",
+    "name": "Bloomberg - Top Stories",
+    "url": "https://www.bloomberg.com/",
+    "topic": "business",
+    "region": "usa",
+    "reliability_score": 9,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "edmonton-journal-top",
+    "name": "Edmonton Journal - Top Stories",
+    "url": "https://edmontonjournal.com/",
+    "rss": "https://edmontonjournal.com/feed",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "regina-leader-post-top",
+    "name": "Regina Leader-Post - Top Stories",
+    "url": "https://leaderpost.com/",
+    "rss": "https://leaderpost.com/feed/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "saskatoon-starphoenix-top",
+    "name": "Saskatoon StarPhoenix - Top Stories",
+    "url": "https://thestarphoenix.com/",
+    "rss": "https://thestarphoenix.com/feed/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "winnipeg-free-press-top",
+    "name": "Winnipeg Free Press - Top Stories",
+    "url": "https://www.winnipegfreepress.com/",
+    "rss": "https://www.winnipegfreepress.com/feed",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "windsor-star-top",
+    "name": "Windsor Star - Top Stories",
+    "url": "https://windsorstar.com/",
+    "rss": "https://windsorstar.com/feed/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "chronicle-herald-top",
+    "name": "Chronicle Herald - Top Stories",
+    "url": "https://www.thechronicleherald.ca/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lesoleil-actualites",
+    "name": "Le Soleil - Actualites",
+    "url": "https://www.lesoleil.com/actualites/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "ledroit-actualites",
+    "name": "Le Droit - Actualites",
+    "url": "https://www.ledroit.com/actualites/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lenouvelliste-actualites",
+    "name": "Le Nouvelliste - Actualites",
+    "url": "https://www.lenouvelliste.ca/actualites/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "latribune-actualites",
+    "name": "La Tribune - Actualites",
+    "url": "https://www.latribune.ca/actualites/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "lequotidien-actualites",
+    "name": "Le Quotidien - Actualites",
+    "url": "https://www.lequotidien.com/actualites/",
+    "topic": "world",
+    "region": "canada",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "chicago-suntimes-top",
+    "name": "Chicago Sun-Times - Top Stories",
+    "url": "https://chicago.suntimes.com/",
+    "rss": "https://chicago.suntimes.com/rss/index.xml",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "philadelphia-inquirer-news",
+    "name": "The Philadelphia Inquirer - News",
+    "url": "https://www.inquirer.com/news/",
+    "rss": "https://www.inquirer.com/arc/outboundfeeds/rss/category/news/?outputType=xml",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "seattle-times-top",
+    "name": "The Seattle Times - Top Stories",
+    "url": "https://www.seattletimes.com/",
+    "rss": "https://www.seattletimes.com/feed/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "startribune-local",
+    "name": "Star Tribune - Local News",
+    "url": "https://www.startribune.com/local/",
+    "rss": "https://www.startribune.com/local/index.rss2",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 45
+  },
+  {
+    "id": "chicagotribune-news",
+    "name": "Chicago Tribune - News",
+    "url": "https://www.chicagotribune.com/news/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "bostonglobe-metro",
+    "name": "The Boston Globe - Metro",
+    "url": "https://www.bostonglobe.com/metro/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "dallasnews-news",
+    "name": "The Dallas Morning News - News",
+    "url": "https://www.dallasnews.com/news/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "reviewjournal-local",
+    "name": "Las Vegas Review-Journal - Local",
+    "url": "https://www.reviewjournal.com/local/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "jsonline-news",
+    "name": "Milwaukee Journal Sentinel - News",
+    "url": "https://www.jsonline.com/news/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 60
+  },
+  {
+    "id": "denverpost-news",
+    "name": "The Denver Post - News",
+    "url": "https://www.denverpost.com/news/",
+    "topic": "world",
+    "region": "usa",
+    "reliability_score": 8,
+    "intervalMinutes": 60
   }
 ]

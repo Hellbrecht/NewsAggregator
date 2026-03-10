@@ -523,7 +523,7 @@ function renderTableRow(item) {
   const changePct = unavailable ? "--" : formatSignedPercent(item.changePercent);
   const updated = unavailable ? "Unavailable" : [item.date, item.time].filter(Boolean).join(" ");
   const marketLabel = marketName(item.market);
-  const symbolHref = buildYahooQuoteUrl(item.symbol);
+  const symbolHref = buildYahooQuoteUrl(item.quotePageSymbol || item.symbol);
 
   return `
     <tr>
