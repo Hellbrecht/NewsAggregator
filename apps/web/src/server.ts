@@ -365,6 +365,11 @@ const server = createServer(async (request, response) => {
     return;
   }
 
+  if (url.pathname === "/maps") {
+    await sendStaticFile(path.join(PUBLIC_DIR, "maps.html"), response);
+    return;
+  }
+
   const staticFilePath = path.join(PUBLIC_DIR, url.pathname);
   await sendStaticFile(staticFilePath, response);
 });
