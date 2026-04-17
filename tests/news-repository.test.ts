@@ -61,7 +61,8 @@ test("loadEntries includes pipeline-ingested articles in the main news list", as
 
     assert.equal(entries.length, 1);
     assert.equal(entries[0].id, "article-1");
-    assert.equal(entries[0].source, "radio-canada-environnement");
+    assert.equal(entries[0].source, "Radio-Canada Info - Environnement");
+    assert.equal(entries[0].region, "canada");
     assert.equal(entries[0].link, "https://ici.radio-canada.ca/nouvelle/12345");
     assert(entries[0].riskTags.includes("drought"));
     assert(entries[0].riskTags.includes("flooding"));

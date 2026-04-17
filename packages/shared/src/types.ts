@@ -12,6 +12,8 @@ export interface NewsEntry {
   summary: string;
   link: string;
   source: string;
+  region?: string;
+  locationLabel?: string;
   publishedAt: string;
   riskTags: RiskTag[];
 }
