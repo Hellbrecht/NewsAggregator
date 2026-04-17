@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maps | Water Risk Monitor</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="top-nav-inner">
+        <a class="top-nav-brand" href="/">Water Risk Monitor</a>
+        <nav class="top-nav-links" aria-label="Primary navigation">
+          <a class="top-nav-link" href="/">News</a>
+          <a class="top-nav-link" href="/stocks">Stocks</a>
+          <a class="top-nav-link" href="/hydrology">Hydrology Live</a>
+          <a class="top-nav-link" href="/alerts">Alerts</a>
+          <a class="top-nav-link active" href="/maps">Maps</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="maps-page-wrap">
+      <header class="feed-header maps-page-header">
+        <h1>Water Risk Map</h1>
+        <p>Real-time hydrology stations. Click anywhere on the map to trace the river path downstream to its terminal point.</p>
+        <div class="maps-actions">
+          <button id="maps-refresh-btn" type="button">Refresh Stations</button>
+          <span id="maps-status" class="scan-status">Loading stations...</span>
+        </div>
+      </header>
+
+      <div class="layout maps-layout">
+        <main class="maps-main">
+          <div id="map" class="maps-container"></div>
+        </main>
+
+        <aside class="sidebar">
+        <section class="maps-info-panel" id="maps-info-panel">
+          <h2>Station Detail</h2>
+          <div id="maps-detail" class="maps-detail-empty">
+            <p>Click a station marker on the map to see details and trace its river path.</p>
+          </div>
+        </section>
+
+        <section class="maps-legend">
+          <h2>Legend</h2>
+          <ul class="maps-legend-list">
+            <li><span class="maps-legend-dot maps-dot-ok"></span> Station — normal</li>
+            <li><span class="maps-legend-dot maps-dot-warn"></span> Station — no reading</li>
+            <li><span class="maps-legend-line"></span> River path (downstream)</li>
+          </ul>
+        </section>
+
+        <section class="maps-layers-panel">
+          <h2>Layers</h2>
+          <ul class="maps-layers-list">
+            <li>
+              <label class="maps-layer-toggle">
+                <input type="checkbox" id="layer-stations" checked />
+                <span>Hydrology stations</span>
+              </label>
+            </li>
+            <li>
+              <label class="maps-layer-toggle">
+                <input type="checkbox" id="layer-riverpaths" checked />
+                <span>River paths</span>
+              </label>
+            </li>
+          </ul>
+        </section>
+      </aside>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="/maps.js" defer></script>
+  </body>
+</html>
