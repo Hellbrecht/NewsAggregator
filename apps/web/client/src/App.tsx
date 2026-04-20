@@ -8,6 +8,7 @@
 // Route = one mapping: "when URL is /news, show <NewsPage />"
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { ErrorBoundary } from './ErrorBoundary'
 import Dashboard  from './pages/Dashboard'
 
 // Pages — we'll create these one by one
@@ -27,6 +28,7 @@ export default function App() {
         Once loaded it's cached — subsequent visits are instant.
       */}
       <Suspense fallback={<PageLoader />}>
+        <ErrorBoundary>
         <Routes>
           {/* Default route — redirect / to /news */}
           <Route path="/"           element={<Navigate to="/news" replace />} />
@@ -37,6 +39,7 @@ export default function App() {
           <Route path="/map"        element={<MapPage />} />
           <Route path="/dashboard"  element={<Dashboard />} />
         </Routes>
+        </ErrorBoundary>
       </Suspense>
     </BrowserRouter>
   )

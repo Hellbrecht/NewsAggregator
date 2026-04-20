@@ -39,12 +39,12 @@ export interface NewsResponse {
 export interface StockQuote {
   symbol:        string
   name?:         string
-  close:         number
-  change:        number
-  changePercent: number
-  open?:         number
-  high?:         number
-  low?:          number
+  close:         number | null
+  change:        number | null
+  changePercent: number | null
+  open?:         number | null
+  high?:         number | null
+  low?:          number | null
   date?:         string
   status:        string
   market:        string
@@ -53,6 +53,17 @@ export interface StockQuote {
 export interface StocksResponse {
   requestedAt: string
   items:       StockQuote[]
+}
+
+export interface WatchlistItem {
+  symbol:   string
+  market:   string
+  name?:    string
+  exchange?: string
+}
+
+export interface WatchlistResponse {
+  items: WatchlistItem[]
 }
 
 export interface HydrologyItem {
@@ -85,14 +96,15 @@ export interface FeedItem {
   id:                string
   title:             string
   summary?:          string
-  link?:             string
-  source?:           string
+  originalUrl?:      string   // link to source article
+  sourceName?:       string   // display name of source
   region?:           string
-  publishedAt?:      string
+  timestamp?:        string   // ISO date string
   riskScore?:        number
   riskTags?:         string[]
-  type?:             'news' | 'data'
+  type?:             string   // 'NEWS' | 'DATA'
   relevanceFeedback: 'up' | 'down' | null
+  sourceReliability?: number
 }
 
 export interface CombinedFeedResponse {
@@ -144,7 +156,7 @@ export const api = {
 
   // Stocks
   getStocksWatchlist: () =>
-    get<StocksResponse>('/api/stocks/watchlist'),
+    get<WatchlistResponse>('/api/stocks/watchlist'),
 
   getStocks: (symbols: string[]) =>
     get<StocksResponse>(`/api/stocks?symbols=${symbols.join(',')}`),
