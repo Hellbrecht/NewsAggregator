@@ -144,26 +144,25 @@ export default function MapPage() {
     riverLayerRef.current?.clearLayers()
 
     try {
-      const res = await fetch(RIVER_RUNNER_API, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          inputs: { lat: { value: lat }, lon: { value: lng } },
-        }),
-      })
+      const res = await fetch(
+        `${RIVER_RUNNER_API}?lat=${lat}&lng=${lng}`
+      )
 
       if (!res.ok) throw new Error(`River runner: ${res.status}`)
 
-      const geojson = await res.json()
-      const features = geojson?.features ?? []
+      const data = await res.json()
 
-      if (features.length === 0) {
-        setStatus('No river path found at this point')
+      // API wraps the FeatureCollection in { value: {...} }
+      const featureCollection = data?.value ?? data
+      const features = featureCollection?.features ?? []
+
+      if (features.length === 0 || data?.code === 'InvalidParameterValue') {
+        setStatus('No river path found — try clicking on a river or stream')
         setTracing(false)
         return
       }
 
-      L.geoJSON(geojson, {
+      L.geoJSON(featureCollection, {
         style: { color: '#3b82f6', weight: 2, opacity: 0.8 },
       }).addTo(riverLayerRef.current!)
 
