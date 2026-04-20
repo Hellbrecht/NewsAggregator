@@ -14,7 +14,7 @@ export default function Dashboard() {
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
       {/* ── Top navigation bar ── */}
-      <TopBar activePage="News">
+      <TopBar>
         <ThemeToggle />
       </TopBar>
 

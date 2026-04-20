@@ -9,17 +9,22 @@
 //   </TopBar>
 
 import type { ReactNode } from 'react'
+import { NavLink } from 'react-router-dom'
 
-// The pages shown in the nav — order matters (left to right)
-export const NAV_PAGES = ['News', 'Hydrology', 'Stocks', 'Alerts', 'Map'] as const
-export type NavPage = typeof NAV_PAGES[number]
+// Nav items — label shown + URL path
+const NAV_ITEMS = [
+  { label: 'News',       path: '/news'      },
+  { label: 'Hydrology',  path: '/hydrology' },
+  { label: 'Stocks',     path: '/stocks'    },
+  { label: 'Alerts',     path: '/alerts'    },
+  { label: 'Map',        path: '/map'       },
+] as const
 
 interface TopBarProps {
-  activePage: NavPage
-  children?:  ReactNode  // right-side actions (theme toggle, etc.)
+  children?: ReactNode  // right-side actions (theme toggle, etc.)
 }
 
-export function TopBar({ activePage, children }: TopBarProps) {
+export function TopBar({ children }: TopBarProps) {
   return (
     <header style={{
       height:         'var(--topbar-height)',
@@ -52,32 +57,27 @@ export function TopBar({ activePage, children }: TopBarProps) {
         </span>
       </div>
 
-      {/* Nav links — horizontal, one line */}
+      {/* Nav links — NavLink auto-detects the active route */}
       <nav style={{ display: 'flex', alignItems: 'stretch', gap: 0, height: '100%' }}>
-        {NAV_PAGES.map(page => {
-          const isActive = page === activePage
-          return (
-            <a
-              key={page}
-              href={`/${page.toLowerCase()}`}
-              style={{
-                display:        'flex',
-                alignItems:     'center',
-                padding:        '0 var(--space-4)',
-                fontSize:       'var(--text-sm)',
-                fontWeight:     isActive ? 'var(--font-weight-medium)' : 'var(--font-weight-normal)',
-                color:          isActive ? 'var(--text-primary)' : 'var(--text-muted)',
-                textDecoration: 'none',
-                // Red underline on active page — single pixel, flush with bottom of bar
-                borderBottom:   isActive ? '2px solid var(--accent)' : '2px solid transparent',
-                // Smooth transition when switching pages
-                transition:     'color 0.15s, border-color 0.15s',
-              }}
-            >
-              {page}
-            </a>
-          )
-        })}
+        {NAV_ITEMS.map(({ label, path }) => (
+          <NavLink
+            key={path}
+            to={path}
+            style={({ isActive }) => ({
+              display:        'flex',
+              alignItems:     'center',
+              padding:        '0 var(--space-4)',
+              fontSize:       'var(--text-sm)',
+              fontWeight:     isActive ? 'var(--font-weight-medium)' : 'var(--font-weight-normal)',
+              color:          isActive ? 'var(--text-primary)' : 'var(--text-muted)',
+              textDecoration: 'none',
+              borderBottom:   isActive ? '2px solid var(--accent)' : '2px solid transparent',
+              transition:     'color 0.15s, border-color 0.15s',
+            })}
+          >
+            {label}
+          </NavLink>
+        ))}
       </nav>
 
       {/* Spacer — pushes action slot to the right */}

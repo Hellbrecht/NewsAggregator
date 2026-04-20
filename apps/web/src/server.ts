@@ -396,7 +396,7 @@ async function handleNewsApi(url: URL, response: ServerResponse<IncomingMessage>
     .filter((entry) => entry.relevanceFeedback !== "down");
 
   const filtered = dateFilter
-    ? visibleEntries.filter((entry) => tryToDateKey(entry.publishedAt) === dateFilter)
+    ? visibleEntries.filter((entry) => tryToDateKey(entry.publishedAt).startsWith(dateFilter))
     : visibleEntries;
 
   const paged = paginate(filtered, page, PAGE_SIZE);
@@ -615,7 +615,7 @@ function isValidDateFilter(value: string | null): value is string {
     return false;
   }
 
-  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) || /^\d{4}-\d{2}$/.test(value);
 }
 
 async function readJsonBody(request: IncomingMessage): Promise<Record<string, unknown>> {
