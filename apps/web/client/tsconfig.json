@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    // Target modern browsers — no need to support IE
+    "target": "ES2020",
+    // ESNext modules = native browser imports (Vite handles the bundling)
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    // Enables JSX support for React (.tsx files)
+    "jsx": "react-jsx",
+    // Strict mode catches common mistakes at compile time
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    // Allows importing .json files directly
+    "resolveJsonModule": true,
+    // Allows default imports from CommonJS packages
+    "esModuleInterop": true
+  },
+  "include": ["src"]
+}

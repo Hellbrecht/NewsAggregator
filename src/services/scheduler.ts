@@ -1,4 +1,5 @@
 import { fetchApiDataset } from "../ingestion/api_ingestor";
+import { fetchHtmlHeadlines } from "../ingestion/html_ingestor";
 import { fetchRSS } from "../ingestion/rss_ingestor";
 import { fetchSatelliteDataset } from "../ingestion/satellite_ingestor";
 import { Article } from "../models/Article";
@@ -128,6 +129,9 @@ async function ingestSingleSource(source: CategorizedSource): Promise<SourceRunR
     if (source.rss) {
       const rssArticles = await fetchRSS(source);
       articles.push(...rssArticles);
+    } else if (source.category === "news") {
+      const htmlArticles = await fetchHtmlHeadlines(source);
+      articles.push(...htmlArticles);
     } else if (source.category === "hydrology") {
       const events = await fetchApiDataset(source);
       datasetEvents.push(...events);

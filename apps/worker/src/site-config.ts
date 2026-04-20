@@ -15,6 +15,7 @@ export async function loadSites(): Promise<MonitoredSite[]> {
         id: source.id,
         name: source.name,
         url: source.url,
+        rss: source.rss,
         intervalMinutes: Math.max(1, Number(source.intervalMinutes) || 30)
       }));
 
@@ -48,6 +49,7 @@ function normalizeSite(site: MonitoredSite): MonitoredSite {
     id: site.id,
     name: site.name,
     url: site.url,
+    rss: typeof site.rss === "string" && site.rss.trim() ? site.rss.trim() : undefined,
     intervalMinutes: Math.max(1, Number(site.intervalMinutes) || 30)
   };
 }

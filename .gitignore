@@ -36,3 +36,6 @@ data/cache/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Claude Code internals (sessions, worktrees, cache)
+.claude/

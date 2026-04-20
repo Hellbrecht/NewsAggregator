@@ -32,3 +32,30 @@ test("toNewsEntryFromPipelineArticle allows untitled items when raw content is w
   assert.equal(entry?.link, "https://ici.radio-canada.ca/info/videos/1-1234567");
   assert.equal(entry?.title, "Voir le reportage complet");
 });
+
+test("toNewsEntryFromPipelineArticle infers Canada from Calgary article text", () => {
+  const entry = toNewsEntryFromPipelineArticle(
+    {
+      id: "pipeline-3",
+      source_id: "reuters-env",
+      title: "Calgary flood response expands after heavy runoff",
+      summary: "Officials in Calgary warned more neighbourhoods could be affected.",
+      published_at: "2026-03-10T00:00:00.000Z",
+      raw_content:
+        "Emergency crews in Calgary, Alberta said river levels remain elevated. https://example.com/calgary-flood"
+    },
+    undefined,
+    {
+      id: "reuters-env",
+      name: "Reuters Best Feed",
+      url: "https://www.reutersagency.com/en/reutersbest/reuters-best-rss-feeds/",
+      topic: "environment",
+      region: "global",
+      reliability_score: 9,
+      intervalMinutes: 30
+    }
+  );
+
+  assert.notEqual(entry, null);
+  assert.equal(entry?.locationLabel, "Canada");
+});

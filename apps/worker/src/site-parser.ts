@@ -5,6 +5,13 @@ interface ParsedAnchor {
   link: string;
 }
 
+interface ParsedFeedItem {
+  title: string;
+  summary: string;
+  link: string;
+  publishedAt: string;
+}
+
 export function extractRiskEntries(html: string, siteName: string, siteUrl: string): NewsEntry[] {
   const anchors = parseAnchors(html, siteUrl);
   const seenLinks = new Set<string>();
@@ -37,6 +44,41 @@ export function extractRiskEntries(html: string, siteName: string, siteUrl: stri
   return entries;
 }
 
+export function extractRiskEntriesFromFeed(
+  xml: string,
+  siteName: string,
+  feedUrl: string
+): NewsEntry[] {
+  const items = parseFeedItems(xml, feedUrl);
+  const seenLinks = new Set<string>();
+  const entries: NewsEntry[] = [];
+
+  for (const item of items) {
+    if (seenLinks.has(item.link)) {
+      continue;
+    }
+
+    seenLinks.add(item.link);
+    const riskTags = classifyWaterRisk(`${item.title} ${item.summary}`.trim());
+    if (riskTags.length === 0) {
+      continue;
+    }
+
+    entries.push({
+      id: buildId(item.link),
+      title: item.title,
+      summary:
+        item.summary || `Detected ${riskTags.join(", ")} signal in feed item: "${item.title}".`,
+      link: item.link,
+      source: siteName,
+      publishedAt: item.publishedAt,
+      riskTags
+    });
+  }
+
+  return entries;
+}
+
 function parseAnchors(html: string, baseUrl: string): ParsedAnchor[] {
   const anchors: ParsedAnchor[] = [];
   const anchorPattern = /<a\s+[^>]*href=["']([^"']+)["'][^>]*>(.*?)<\/a>/gims;
@@ -58,6 +100,67 @@ function parseAnchors(html: string, baseUrl: string): ParsedAnchor[] {
   return anchors;
 }
 
+function parseFeedItems(xml: string, baseUrl: string): ParsedFeedItem[] {
+  const entries = extractBlocks(xml, "item");
+  const atomEntries = entries.length > 0 ? entries : extractBlocks(xml, "entry");
+
+  return atomEntries
+    .map((entry) => {
+      const title = cleanText(extractTagValue(entry, "title"));
+      const summary = cleanText(
+        extractTagValue(entry, "description") ||
+          extractTagValue(entry, "content:encoded") ||
+          extractTagValue(entry, "summary") ||
+          extractTagValue(entry, "content")
+      );
+      const link = toAbsoluteUrl(
+        cleanText(extractTagValue(entry, "link") || extractAtomHref(entry)),
+        baseUrl
+      );
+      const publishedAt = normalizeDate(
+        extractTagValue(entry, "pubDate") ||
+          extractTagValue(entry, "published") ||
+          extractTagValue(entry, "updated")
+      );
+
+      if (!title || !link) {
+        return null;
+      }
+
+      return {
+        title,
+        summary,
+        link,
+        publishedAt
+      };
+    })
+    .filter((item): item is ParsedFeedItem => item !== null);
+}
+
+function extractBlocks(value: string, tagName: string): string[] {
+  const blocks: string[] = [];
+  const pattern = new RegExp(`<${tagName}[^>]*>([\\s\\S]*?)<\\/${tagName}>`, "gi");
+  let match = pattern.exec(value);
+
+  while (match) {
+    blocks.push(match[1] ?? "");
+    match = pattern.exec(value);
+  }
+
+  return blocks;
+}
+
+function extractTagValue(block: string, tagName: string): string {
+  const escaped = tagName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`<${escaped}[^>]*>([\\s\\S]*?)<\\/${escaped}>`, "i");
+  return pattern.exec(block)?.[1]?.trim() ?? "";
+}
+
+function extractAtomHref(block: string): string {
+  const match = /<link[^>]+href=["']([^"']+)["'][^>]*>/i.exec(block);
+  return match?.[1]?.trim() ?? "";
+}
+
 function stripTags(value: string): string {
   return value
     .replace(/<[^>]+>/g, " ")
@@ -65,6 +168,19 @@ function stripTags(value: string): string {
     .replace(/&amp;/gi, "&")
     .replace(/&quot;/gi, '"')
     .replace(/&#39;/gi, "'");
+}
+
+function cleanText(value: string): string {
+  return stripTags(value).replace(/\s+/g, " ").trim();
+}
+
+function normalizeDate(value: string): string {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    return new Date().toISOString();
+  }
+
+  return parsed.toISOString();
 }
 
 function toAbsoluteUrl(url: string, base: string): string | null {

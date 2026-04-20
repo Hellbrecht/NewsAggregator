@@ -1,0 +1,130 @@
+/*
+  DESIGN TOKENS — the single source of truth for all visual values.
+
+  How it works:
+  - CSS custom properties (variables) are defined here once.
+  - Every component reads from these variables, never hardcodes values.
+  - Switching theme = swapping which set of variables is active.
+
+  The [data-theme="dark"] selector means:
+  "apply these variables when the <html> tag has data-theme="dark"".
+  ThemeToggle will flip that attribute.
+*/
+
+/* ── DARK THEME (default) ────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds — pure neutral blacks, no colour cast */
+  --bg-base:      #0c0c0c;  /* page background — near pure black */
+  --bg-panel:     #1a1a1a;  /* cards and panels */
+  --bg-panel-alt: #222222;  /* hover state / secondary panels */
+
+  /* Borders */
+  --border:       #2e2e2e;
+
+  /* Text */
+  --text-primary: #ffffff;  /* pure white */
+  --text-muted:   #707070;  /* medium grey — secondary labels */
+
+  /* Accent — vivid red, as in the inspiration */
+  --accent:       #e5342a;
+  --accent-hover: #cc2a20;
+
+  /* Status colours — used in StatusPill badges */
+  --status-ok:    #16a34a;  /* green — safe / normal */
+  --status-warn:  #d97706;  /* amber — caution */
+  --status-crit:  #e5342a;  /* red — critical / alert (matches accent) */
+  --status-info:  #0ea5e9;  /* blue — informational */
+  --status-muted: #3a3a3a;  /* grey — inactive */
+}
+
+/* ── LIGHT THEME ─────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-base:      #f5f5f5;
+  --bg-panel:     #ffffff;
+  --bg-panel-alt: #ebebeb;
+  --border:       #d4d4d4;
+  --text-primary: #0c0c0c;
+  --text-muted:   #666666;
+  --accent:       #e5342a;
+  --accent-hover: #cc2a20;
+  --status-ok:    #15803d;
+  --status-warn:  #b45309;
+  --status-crit:  #e5342a;
+  --status-info:  #0369a1;
+  --status-muted: #a3a3a3;
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────────────────── */
+:root {
+  /* Hasklig is a coding-style font — clean and technical, fits the dashboard feel */
+  --font-sans: 'Hasklig', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  --font-mono: 'Hasklig', 'Fira Code', monospace;
+
+  /* Size scale — xs to xl */
+  --text-xs:  0.72rem;   /*  ~11px */
+  --text-sm:  0.84rem;   /*  ~13px */
+  --text-md:  0.96rem;   /*  ~15px — body text */
+  --text-lg:  1.1rem;    /*  ~18px — section titles */
+  --text-xl:  1.4rem;    /*  ~22px — page titles */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold:   600;
+}
+
+/* ── SPACING ─────────────────────────────────────────────────── */
+:root {
+  /*
+    4px base grid — everything is a multiple of 4.
+    Same concept as a grid in motion graphics: consistent rhythm.
+  */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+}
+
+/* ── SHAPE ───────────────────────────────────────────────────── */
+:root {
+  --radius-sm:  4px;   /* subtle — inputs, small badges */
+  --radius-md:  8px;   /* panels, cards */
+  --radius-lg:  12px;  /* large cards, modals */
+  --radius-pill: 999px; /* fully rounded — status pills */
+}
+
+/* ── LAYOUT ──────────────────────────────────────────────────── */
+:root {
+  --sidebar-width:     220px;  /* left navigation panel */
+  --topbar-height:      52px;  /* top bar */
+  --panel-padding:      var(--space-4);
+}
+
+/* ── BASE RESET ──────────────────────────────────────────────── */
+/*
+  A minimal reset so all browsers start from the same place.
+  Think of it as zeroing out your comp before adding layers.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}

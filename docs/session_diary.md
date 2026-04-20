@@ -98,3 +98,18 @@
     - `npm run build`: pass
     - `npx tsx --test tests/stocks-service.test.ts`: pass
     - `npm run test -- tests/stocks-service.test.ts`: includes one unrelated flaky failure in `tests/output-store.test.ts` (pre-existing).
+
+## 2026-03-09
+
+### Timestamped Note
+
+- 2026-03-09 14:34:00 -04:00 (America/Toronto)
+  - Added alias-aware stock catalog support so configured tickers can carry provider-specific symbols for quote lookup.
+  - Updated the Stocks quote service to load configured aliases, try provider candidates for non-US symbols, and return a preferred `quotePageSymbol` for UI links.
+  - Updated the Stocks table link builder to use the preferred quote page symbol instead of the raw display ticker.
+  - Seeded Yahoo aliases for an initial Europe/Asia set in `data_sources/stocks.json`, including France, UK, Japan, Hong Kong, and Singapore examples.
+  - Added regression coverage for alias parsing and non-US Yahoo fallback behavior in `tests/stocks-watchlist.test.ts` and `tests/stocks-service.test.ts`.
+  - Validation:
+    - `npm test`: pass
+    - `npm run build`: pass
+    - `npm run lint`: pass

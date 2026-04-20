@@ -12,6 +12,8 @@ export interface NewsEntry {
   summary: string;
   link: string;
   source: string;
+  region?: string;
+  locationLabel?: string;
   publishedAt: string;
   riskTags: RiskTag[];
 }
@@ -20,6 +22,7 @@ export interface MonitoredSite {
   id: string;
   name: string;
   url: string;
+  rss?: string;
   intervalMinutes: number;
 }
 

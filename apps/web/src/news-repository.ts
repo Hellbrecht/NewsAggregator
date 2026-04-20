@@ -2,9 +2,11 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 
 import { classifyWaterRisk, NewsEntry, RiskTag } from "../../../packages/shared/src";
+import { Source } from "../../../src/models/Source";
 import { isPlaceholderArticleTitle, resolveArticleTitle } from "../../../src/analysis/article_title";
 import { isWaterRelevantText, RelevanceProfile } from "../../../src/analysis/water_relevance";
 import { loadRelevanceProfile } from "../../../src/services/relevance_profile_store";
+import { loadSources } from "./source-config";
 
 const DEFAULT_LEGACY_STORE_PATH = path.resolve(__dirname, "../../../data/news-entries.json");
 const DEFAULT_PIPELINE_ARTICLES_PATH = path.resolve(__dirname, "../../../data/ingested/articles.json");
@@ -15,23 +17,31 @@ const PIPELINE_ARTICLES_PATH = path.resolve(
 );
 
 export async function loadEntries(): Promise<NewsEntry[]> {
-  const [legacyEntries, pipelineEntries] = await Promise.all([loadLegacyEntries(), loadPipelineEntries()]);
+  const sources = await loadSources();
+  const sourceById = new Map(sources.map((source) => [source.id, source]));
+  const [legacyEntries, pipelineEntries] = await Promise.all([
+    loadLegacyEntries(sourceById),
+    loadPipelineEntries(sourceById)
+  ]);
   return mergeByLink([...legacyEntries, ...pipelineEntries]).sort(byNewestFirst);
 }
 
-async function loadLegacyEntries(): Promise<NewsEntry[]> {
+async function loadLegacyEntries(sourceById: Map<string, Source>): Promise<NewsEntry[]> {
   const parsed = await readJsonArray(LEGACY_STORE_PATH);
   return parsed
     .filter(isEntryLike)
+    .map((entry) => withSourceMetadata(entry, sourceById))
     .filter((entry) => isWaterRelevantText(`${entry.title} ${entry.summary}`));
 }
 
-async function loadPipelineEntries(): Promise<NewsEntry[]> {
+async function loadPipelineEntries(sourceById: Map<string, Source>): Promise<NewsEntry[]> {
   const relevanceProfile = await loadRelevanceProfile();
   const parsed = await readJsonArray(PIPELINE_ARTICLES_PATH);
   return parsed
     .filter(isPipelineArticleLike)
-    .map((article) => toNewsEntryFromPipelineArticle(article, relevanceProfile))
+    .map((article) =>
+      toNewsEntryFromPipelineArticle(article, relevanceProfile, sourceById.get(article.source_id))
+    )
     .filter((entry): entry is NewsEntry => entry !== null);
 }
 
@@ -74,6 +84,7 @@ export interface PipelineArticleLike {
   source_id: string;
   title: string;
   summary: string;
+  region?: string;
   published_at: string;
   raw_content: string;
   risk_labels?: string[];
@@ -81,7 +92,8 @@ export interface PipelineArticleLike {
 
 export function toNewsEntryFromPipelineArticle(
   article: PipelineArticleLike,
-  relevanceProfile?: RelevanceProfile
+  relevanceProfile?: RelevanceProfile,
+  source?: Source
 ): NewsEntry | null {
   const displayRelevanceText = `${article.title} ${article.summary}`.trim();
   const isDisplayRelevant = isWaterRelevantText(displayRelevanceText, relevanceProfile);
@@ -113,7 +125,13 @@ export function toNewsEntryFromPipelineArticle(
     title: resolvedTitle,
     summary: article.summary,
     link,
-    source: article.source_id,
+    source: source?.name ?? article.source_id,
+    region: normalizeOptionalText(article.region) ?? source?.region,
+    locationLabel: inferCountryLabel(
+      [article.title, article.summary, article.raw_content, source?.name, source?.region, link]
+        .filter(Boolean)
+        .join(" ")
+    ),
     publishedAt: article.published_at,
     riskTags
   };
@@ -199,6 +217,123 @@ function mergeByLink(entries: NewsEntry[]): NewsEntry[] {
 
 function normalizeLink(link: string): string {
   return link.trim().toLowerCase();
+}
+
+function withSourceMetadata(entry: NewsEntry, sourceById: Map<string, Source>): NewsEntry {
+  const source = sourceById.get(entry.source);
+  if (!source) {
+    return {
+      ...entry,
+      locationLabel:
+        normalizeOptionalText(entry.locationLabel) ??
+        inferCountryLabel([entry.title, entry.summary, entry.link, entry.source, entry.region].join(" "))
+    };
+  }
+
+  return {
+    ...entry,
+    source: source.name,
+    region: normalizeOptionalText(entry.region) ?? source.region,
+    locationLabel:
+      normalizeOptionalText(entry.locationLabel) ??
+      inferCountryLabel([entry.title, entry.summary, entry.link, source.name, entry.region, source.region].join(" "))
+  };
+}
+
+function normalizeOptionalText(value: string | undefined): string | undefined {
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  const normalized = value.trim();
+  return normalized || undefined;
+}
+
+function inferCountryLabel(value: string): string | undefined {
+  const haystack = value.toLowerCase();
+  if (!haystack.trim()) {
+    return undefined;
+  }
+
+  const countryMatchers: Array<{ label: string; patterns: RegExp[] }> = [
+    {
+      label: "Canada",
+      patterns: [
+        /\bcanada\b/,
+        /\bcanadian\b/,
+        /\balberta\b/,
+        /\bcalgary\b/,
+        /\bedmonton\b/,
+        /\bontario\b/,
+        /\bquebec\b/,
+        /\bmontreal\b/,
+        /\btoronto\b/,
+        /\bvancouver\b/,
+        /\bottawa\b/,
+        /\bmanitoba\b/,
+        /\bsaskatchewan\b/,
+        /\bnova scotia\b/,
+        /\bnew brunswick\b/,
+        /\bnewfoundland\b/,
+        /\bprince edward island\b/,
+        /\byukon\b/,
+        /\bnunavut\b/,
+        /\bnorthwest territories\b/
+      ]
+    },
+    {
+      label: "American",
+      patterns: [
+        /\bunited states\b/,
+        /\busa\b/,
+        /\bu\.s\.\b/,
+        /\bamerican\b/,
+        /\bcalifornia\b/,
+        /\btexas\b/,
+        /\bflorida\b/,
+        /\bnew york\b/,
+        /\bseattle\b/,
+        /\blos angeles\b/,
+        /\bchicago\b/
+      ]
+    },
+    {
+      label: "Australia",
+      patterns: [
+        /\baustralia\b/,
+        /\baustralian\b/,
+        /\bqueensland\b/,
+        /\bbrisbane\b/,
+        /\bsydney\b/,
+        /\bmelbourne\b/,
+        /\bdarwin\b/,
+        /\bbundaberg\b/
+      ]
+    },
+    {
+      label: "UK",
+      patterns: [/\bunited kingdom\b/, /\buk\b/, /\bbritain\b/, /\bbritish\b/, /\bengland\b/, /\blondon\b/]
+    },
+    { label: "France", patterns: [/\bfrance\b/, /\bfrench\b/, /\bparis\b/] },
+    { label: "Germany", patterns: [/\bgermany\b/, /\bgerman\b/, /\bberlin\b/] },
+    { label: "Japan", patterns: [/\bjapan\b/, /\bjapanese\b/, /\btokyo\b/] },
+    { label: "China", patterns: [/\bchina\b/, /\bchinese\b/, /\bbeijing\b/] },
+    { label: "India", patterns: [/\bindia\b/, /\bindian\b/, /\bdelhi\b/, /\bmumbai\b/] },
+    { label: "Brazil", patterns: [/\bbrazil\b/, /\bbrazilian\b/, /\bsao paulo\b/] },
+    { label: "Mexico", patterns: [/\bmexico\b/, /\bmexican\b/, /\bmexico city\b/] },
+    {
+      label: "South Africa",
+      patterns: [/\bsouth africa\b/, /\bsouth african\b/, /\bcape town\b/, /\bjohannesburg\b/]
+    }
+  ];
+
+  for (const matcher of countryMatchers) {
+    if (matcher.patterns.some((pattern) => pattern.test(haystack))) {
+      return matcher.label;
+    }
+  }
+
+  return undefined;
 }
 
 async function readJsonArray(filePath: string): Promise<unknown[]> {
